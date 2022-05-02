@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MudTestApp.Models.Test>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LabTechAssigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MudType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MudSystemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceivedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExposureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStarted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestComments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabTechAssigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MudType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MudSystemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExposureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEnded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestComments)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TestID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TestID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TestID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
