@@ -14,10 +14,9 @@ namespace MudTestApp.Models
         public int C_Elongation { get; set; }
         public bool C_Production { get; set; }
 
-        public ICollection<TestData> Datas { get; set; }
-            
-        //a single compound beings tested at mutliple temps
-        //multiple compounds per test
+        public ICollection<TestResults> Results { get; set; }
+
+        //one-to-many with TestResults
 
     }
 }

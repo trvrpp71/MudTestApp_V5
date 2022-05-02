@@ -1,11 +1,10 @@
 ﻿namespace MudTestApp.Models
 {
-    public class TestData
+    public class TestResults
     {
-        public int DataID { get; set; } //primary key
+        public int TestResultsID { get; set; }  //primary key
+        public int TestID { get; set; } //foreign key 
         public int CompoundID { get; set; } //foreign key
-
-
 
         public int TestTemp { get; set; }
         public double S1Thickness { get; set; }
@@ -23,14 +22,8 @@
         public int S1_tensile { get; set; }
         public int S1_elongation { get; set; }
 
-        //navigation properties
-        public Compound Compound { get; set; }  
-        
-        //a test can only be associated with one compound
-
-
-        
-
+        public Test Test { get; set; } //nav prop
+        public Compound Compound { get; set; }  //nav prop
 
     }
 }

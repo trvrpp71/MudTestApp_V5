@@ -5,7 +5,7 @@ namespace MudTestApp.Models
 {
     public class Test
     {
-        public int Id { get; set; }
+        public int TestID { get; set; }
 
         public string Customer { get; set; }
 
@@ -27,11 +27,11 @@ namespace MudTestApp.Models
 
         public string TestComments { get; set; }
 
-        
-        public ICollection<Compound> Compounds { get; set; }
 
-        //Test is a 1-to-many relationships with Compounds
-        //as you will have 1 test with multiple compounds being tested 
+        public ICollection<TestResults> Results { get; set; }
+
+        //Test is a 1-to-many relationships with TestResults
+
         
 
     }
