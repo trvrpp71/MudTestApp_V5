@@ -6,7 +6,7 @@ namespace MudTestApp.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(MudTestContext context)
+        public static void Initialize(MudTestAppContext context)
         {
             context.Database.EnsureCreated();
 

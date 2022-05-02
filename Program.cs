@@ -29,7 +29,7 @@ namespace MudTestApp
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<MudTestContext>();
+                    var context = services.GetRequiredService<MudTestAppContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

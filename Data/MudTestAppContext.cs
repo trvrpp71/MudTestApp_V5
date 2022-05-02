@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MudTestApp.Data
 {
-    public class MudTestContext : DbContext
+    public class MudTestAppContext : DbContext
     {
-        public MudTestContext(DbContextOptions<MudTestContext> options): base(options)
+        public MudTestAppContext(DbContextOptions<MudTestAppContext> options): base(options)
             { }
 
         public DbSet<Test> Tests { get; set; }
