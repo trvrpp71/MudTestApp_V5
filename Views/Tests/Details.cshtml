@@ -76,7 +76,37 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TestComments)
         </dd>
-    </dl>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Results)
+        </dt>
+
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Compound</th>
+                    <th>Test Temp</th>
+                </tr>
+
+        @foreach (var item in Model.Results)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Compound.CompoundName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> item.TestTemp)
+                </td>
+            </tr>
+        }
+
+
+
+            </table>
+        </dd>
+
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.TestID">Edit</a> |

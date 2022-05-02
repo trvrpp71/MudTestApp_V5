@@ -34,6 +34,9 @@ namespace MudTestApp.Controllers
             }
 
             var test = await _context.Tests
+                .Include(s => s.Results)
+                    .ThenInclude(r => r.Compound)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.TestID == id);
             if (test == null)
             {
