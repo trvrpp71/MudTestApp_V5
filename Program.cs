@@ -1,3 +1,5 @@
+#nullable disable
+
 using MudTestApp.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;

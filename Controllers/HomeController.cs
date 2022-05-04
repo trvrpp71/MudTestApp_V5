@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#nullable disable
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MudTestApp.Models;
 using System;

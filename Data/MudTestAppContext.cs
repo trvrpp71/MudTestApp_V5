@@ -1,4 +1,6 @@
-﻿using MudTestApp.Models;
+﻿#nullable disable
+
+using MudTestApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MudTestApp.Data

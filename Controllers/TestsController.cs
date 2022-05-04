@@ -57,14 +57,31 @@ namespace MudTestApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TestID,Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Create(
+            [Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(test);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+                }
+
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(test);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
+            catch (DbUpdateException /* ex */)
+            {
+                //log the error (uncomments the ex variable and write a log
+                ModelState.AddModelError("", "Unable to save changes. " + "Try again and if problem persists, " + "see your system admin.");
+            }
+
             return View(test);
         }
 
@@ -120,7 +137,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError= false)
         {
             if (id == null)
             {
@@ -128,10 +145,16 @@ namespace MudTestApp.Controllers
             }
 
             var test = await _context.Tests
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.TestID == id);
             if (test == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] = "Delete failed. Please try again. If problem persists, please see system Admin.";
             }
 
             return View(test);
@@ -143,9 +166,23 @@ namespace MudTestApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var test = await _context.Tests.FindAsync(id);
-            _context.Tests.Remove(test);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            if(test == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            try
+            {
+                _context.Tests.Remove(test);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //log the error
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+            }
+
         }
 
         private bool TestExists(int id)
