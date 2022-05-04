@@ -1,0 +1,69 @@
+﻿@model MudTestApp.Models.Compound
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Compound</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CompoundID" />
+            <div class="form-group">
+                <label asp-for="CompoundName" class="control-label"></label>
+                <input asp-for="CompoundName" class="form-control" />
+                <span asp-validation-for="CompoundName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_Hardness" class="control-label"></label>
+                <input asp-for="C_Hardness" class="form-control" />
+                <span asp-validation-for="C_Hardness" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_25Mod" class="control-label"></label>
+                <input asp-for="C_25Mod" class="form-control" />
+                <span asp-validation-for="C_25Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_50Mod" class="control-label"></label>
+                <input asp-for="C_50Mod" class="form-control" />
+                <span asp-validation-for="C_50Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_100Mod" class="control-label"></label>
+                <input asp-for="C_100Mod" class="form-control" />
+                <span asp-validation-for="C_100Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_Tensile" class="control-label"></label>
+                <input asp-for="C_Tensile" class="form-control" />
+                <span asp-validation-for="C_Tensile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_Elongation" class="control-label"></label>
+                <input asp-for="C_Elongation" class="form-control" />
+                <span asp-validation-for="C_Elongation" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="C_Production" /> @Html.DisplayNameFor(model => model.C_Production)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
