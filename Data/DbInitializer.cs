@@ -1,4 +1,6 @@
-﻿using MudTestApp.Models;
+﻿#nullable disable
+
+using MudTestApp.Models;
 using System;
 using System.Linq;
 

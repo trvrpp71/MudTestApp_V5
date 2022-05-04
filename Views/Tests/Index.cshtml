@@ -30,21 +30,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReceivedDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExposureTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateStarted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateEnded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TestComments)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -69,21 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReceivedDate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExposureTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateStarted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateEnded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestComments)
-            </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TestID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TestID">Details</a> |
