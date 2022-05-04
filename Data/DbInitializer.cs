@@ -91,6 +91,59 @@ namespace MudTestApp.Data
                     S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
                     S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
                 },
+                
+                new TestResults
+                {
+                    TestID=1, CompoundID = 1, TestTemp = 250, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+                new TestResults
+                {
+                    TestID=1, CompoundID = 2, TestTemp = 138, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+                new TestResults
+                {
+                    TestID=1, CompoundID = 2, TestTemp = 250, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+
+                new TestResults
+                {
+                    TestID=1, CompoundID = 4, TestTemp = 138, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+
+                new TestResults
+                {
+                    TestID=1, CompoundID = 4, TestTemp = 250, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+                new TestResults
+                {
+                    TestID=2, CompoundID = 1, TestTemp = 138, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+
+                new TestResults
+                {
+                    TestID =2, CompoundID = 1, TestTemp = 250, S1Thickness = 2.04, S1Hardness_a = 90,
+                    S1Hardness_b = 85, S1WtAir_a = 0.707, S1WtAir_b = 0.801, S1WtWater_a = 0.110, S1WtWater_b = 0.105,
+                    S1_25Mod = 177, S1_50Mod = 386, S1_100Mod = 980, S1_elongation = 196, S1_tensile = 2241
+                },
+                new TestResults
+                {
+                    TestID=2, CompoundID = 2, TestTemp = 138, S1Thickness = 2.11, S1Hardness_a = 79,
+                    S1Hardness_b = 71, S1WtAir_a = 0.727, S1WtAir_b = 0.811, S1WtWater_a = 0.108, S1WtWater_b = 0.099,
+                    S1_25Mod = 60, S1_50Mod = 134, S1_100Mod = 272, S1_elongation = 359, S1_tensile = 2048
+                },
+
                 new TestResults
                 {
                     TestID =2, CompoundID = 2, TestTemp = 250, S1Thickness = 2.04, S1Hardness_a = 90,
@@ -99,10 +152,28 @@ namespace MudTestApp.Data
                 },
                 new TestResults
                 {
-                    TestID = 3, CompoundID = 3, TestTemp = 300, S1Thickness = 2.32, S1Hardness_a = 89,
+                    TestID = 3, CompoundID = 2, TestTemp = 300, S1Thickness = 2.32, S1Hardness_a = 89,
+                     S1Hardness_b = 92, S1WtAir_a = 0.715, S1WtAir_b = 0.790, S1WtWater_a = 0.1112, S1WtWater_b = 0.115,
+                    S1_25Mod = 200, S1_50Mod = 300, S1_100Mod = 400, S1_elongation = 268, S1_tensile = 1965
+                },
+                new TestResults
+                {
+                    TestID = 3, CompoundID = 2, TestTemp = 350, S1Thickness = 2.32, S1Hardness_a = 89,
                      S1Hardness_b = 92, S1WtAir_a = 0.715, S1WtAir_b = .790, S1WtWater_a = 0.1112, S1WtWater_b = 0.115,
                     S1_25Mod = 200, S1_50Mod = 300, S1_100Mod = 400, S1_elongation = 268, S1_tensile = 1965
                 },
+                new TestResults
+                {
+                    TestID = 3, CompoundID = 3, TestTemp = 300, S1Thickness = 2.32, S1Hardness_a = 89,
+                     S1Hardness_b = 92, S1WtAir_a = 0.715, S1WtAir_b = 0.790, S1WtWater_a = 0.1112, S1WtWater_b = 0.115,
+                    S1_25Mod = 200, S1_50Mod = 300, S1_100Mod = 400, S1_elongation = 268, S1_tensile = 1965
+                },
+                new TestResults
+                {
+                    TestID = 3, CompoundID = 3, TestTemp = 350, S1Thickness = 2.32, S1Hardness_a = 89,
+                     S1Hardness_b = 92, S1WtAir_a = 0.715, S1WtAir_b = 0.790, S1WtWater_a = 0.1112, S1WtWater_b = 0.115,
+                    S1_25Mod = 200, S1_50Mod = 300, S1_100Mod = 400, S1_elongation = 268, S1_tensile = 1965
+                }
                 //new TestData
                 //{
                 //    TestID = 4, CompoundID = 2, TestTempID = 3, S1Thickness = 2.11, S1Hardness_a = 79,
