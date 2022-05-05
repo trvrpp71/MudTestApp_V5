@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MudTestApp.Models.TestResults>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TestTemp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1Thickness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1Hardness_a)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1Hardness_b)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1WtAir_a)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1WtAir_b)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1WtWater_a)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1WtWater_b)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1_25Mod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1_50Mod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1_100Mod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1_tensile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S1_elongation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Test)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compound)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestTemp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1Thickness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1Hardness_a)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1Hardness_b)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1WtAir_a)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1WtAir_b)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1WtWater_a)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1WtWater_b)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1_25Mod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1_50Mod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1_100Mod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1_tensile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S1_elongation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compound.CompoundName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TestResultsID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

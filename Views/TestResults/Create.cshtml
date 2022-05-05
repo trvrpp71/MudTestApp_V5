@@ -1,0 +1,101 @@
+﻿@model MudTestApp.Models.TestResults
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TestResults</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TestID" class="control-label"></label>
+                <select asp-for="TestID" class ="form-control" asp-items="ViewBag.TestID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompoundID" class="control-label"></label>
+                <select asp-for="CompoundID" class ="form-control" asp-items="ViewBag.CompoundID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TestTemp" class="control-label"></label>
+                <input asp-for="TestTemp" class="form-control" />
+                <span asp-validation-for="TestTemp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1Thickness" class="control-label"></label>
+                <input asp-for="S1Thickness" class="form-control" />
+                <span asp-validation-for="S1Thickness" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1Hardness_a" class="control-label"></label>
+                <input asp-for="S1Hardness_a" class="form-control" />
+                <span asp-validation-for="S1Hardness_a" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1Hardness_b" class="control-label"></label>
+                <input asp-for="S1Hardness_b" class="form-control" />
+                <span asp-validation-for="S1Hardness_b" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1WtAir_a" class="control-label"></label>
+                <input asp-for="S1WtAir_a" class="form-control" />
+                <span asp-validation-for="S1WtAir_a" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1WtAir_b" class="control-label"></label>
+                <input asp-for="S1WtAir_b" class="form-control" />
+                <span asp-validation-for="S1WtAir_b" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1WtWater_a" class="control-label"></label>
+                <input asp-for="S1WtWater_a" class="form-control" />
+                <span asp-validation-for="S1WtWater_a" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1WtWater_b" class="control-label"></label>
+                <input asp-for="S1WtWater_b" class="form-control" />
+                <span asp-validation-for="S1WtWater_b" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1_25Mod" class="control-label"></label>
+                <input asp-for="S1_25Mod" class="form-control" />
+                <span asp-validation-for="S1_25Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1_50Mod" class="control-label"></label>
+                <input asp-for="S1_50Mod" class="form-control" />
+                <span asp-validation-for="S1_50Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1_100Mod" class="control-label"></label>
+                <input asp-for="S1_100Mod" class="form-control" />
+                <span asp-validation-for="S1_100Mod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1_tensile" class="control-label"></label>
+                <input asp-for="S1_tensile" class="form-control" />
+                <span asp-validation-for="S1_tensile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="S1_elongation" class="control-label"></label>
+                <input asp-for="S1_elongation" class="form-control" />
+                <span asp-validation-for="S1_elongation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
