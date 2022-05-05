@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MudTestApp.Data;
 using MudTestApp.Models;
+using MudTestApp.Models.TestViewModels;
 
 namespace MudTestApp.Controllers
 {
@@ -33,17 +34,21 @@ namespace MudTestApp.Controllers
                 return NotFound();
             }
 
-            var test = await _context.Tests
-                .Include(s => s.Results)
-                    .ThenInclude(r => r.Compound)
+            //tp modified code
+
+            var viewModel = new TestIndexData();
+
+            viewModel.Test = await _context.Tests
+                .Include(r => r.Results)
+                    .ThenInclude(c => c.Compound)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.TestID == id);
-            if (test == null)
+            if (viewModel == null)
             {
                 return NotFound();
             }
 
-            return View(test);
+            return View(viewModel);
         }
 
         // GET: Tests/Create
