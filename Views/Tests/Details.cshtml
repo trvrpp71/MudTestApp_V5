@@ -77,90 +77,42 @@
             @Html.DisplayFor(model => model.Test.TestComments)
         </dd>
 
-        <dt class="col-sm-2">
-           <h1>Test Results</h1>
-        </dt>
-
-        <dd class="col-sm-10">
-            <table class="table">
-
-                @foreach (var item in Model.TestResults)
-                {
-                    /*header row for compound*/
-                    <tr> 
-                        <th>Compound </th>
-                    </tr>
-
-                    <tr>
-                        @*<th>@Html.DisplayFor(model => model.Compound.CompoundName)</th>*@
-                        <td>@Html.DisplayFor(modelItem => item.Compound)</td>
-                    </tr>
-                    <tr>
-                        <th>Test Temp</th>
-                        <th>Sample 1</th>
-                        <th>Sample 2</th>
-                        <th>Sample 3</th>
-                    </tr>                        
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.TestTemp)
-                        </td>
-                    </tr>
-  
-                    /* then start looping through the test temps*/
-
-                    @foreach (var result in Model.TestResults)
-                    {
+                @foreach (var test in Model.Results)
+                {            
+                    <table class="table">
+                        <tr>
+                            <th>Compound</th>
+                            <th>Test Temp</th>
+                        </tr>
+                    
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => result.TestTemp)
+                                @Html.DisplayFor(modelItem => test.Compound.CompoundName)
                             </td>
-                        </tr> 
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1Hardness_a)</td>
+                            <td>
+                                @Html.DisplayFor(modelItem=> test.TestTemp)
+                            </td>
                         </tr>
+
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1Hardness_b)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1Thickness)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1WtAir_a)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1WtAir_b)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1WtWater_a)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1WtWater_b)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1_25Mod)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1_50Mod)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1_100Mod)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1_elongation)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => result.S1_tensile)</td>
-                        </tr>
-                    }
-  
+                            <td>
+                                <ul>
+                                    <li>Hardness A: @Html.DisplayFor(modelItem=> test.S1Hardness_a) </li>
+                                    <li>Hardness B: @Html.DisplayFor(modelItem=> test.S1Hardness_b) </li>
+                                    <li>Thickness: @Html.DisplayFor(modelItem=> test.S1Thickness) </li>
+                                </ul>
+                            </td>
+                         </tr>
+                    </table>
                 }
 
 
 
-            </table>
-        </dd>
 
 
+
+
+    </dl>
 
 </div>
 <div>
