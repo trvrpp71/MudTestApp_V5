@@ -77,35 +77,47 @@
             @Html.DisplayFor(model => model.TestComments)
         </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Results)
-        </dt>
+ 
 
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Compound</th>
-                    <th>Test Temp</th>
-                </tr>
-
-        @foreach (var item in Model.Results)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Compound.CompoundName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem=> item.TestTemp)
-                </td>
-            </tr>
-        }
+ 
 
 
 
-            </table>
-        </dd>
+                @foreach (var test in Model.Results)
+                {            
+                    <table class="table">
+                        <tr>
+                            <th>Compound</th>
+                            <th>Test Temp</th>
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => test.Compound.CompoundName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem=> test.TestTemp)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Hardness A: @Html.DisplayFor(modelItem=> test.S1Hardness_a) </li>
+                                    <li>Hardness B: @Html.DisplayFor(modelItem=> test.S1Hardness_b) </li>
+                                    <li>Thickness: @Html.DisplayFor(modelItem=> test.S1Thickness) </li>
+                                </ul>
+                            </td>
+                         </tr>
+                    </table>
+                }
 
 
+
+
+
+
+    </dl>
 
 </div>
 <div>
