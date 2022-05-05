@@ -1,4 +1,4 @@
-﻿@model MudTestApp.Models.Test
+﻿@model MudTestApp.Models.TestViewModels.TestIndexData
 
 @{
     ViewData["Title"] = "Details";
@@ -11,94 +11,149 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
+            @Html.DisplayNameFor(model => model.Test.Customer)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer)
+            @Html.DisplayFor(model => model.Test.Customer)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerContact)
+            @Html.DisplayNameFor(model => model.Test.CustomerContact)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerContact)
+            @Html.DisplayFor(model => model.Test.CustomerContact)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LabTechAssigned)
+            @Html.DisplayNameFor(model => model.Test.LabTechAssigned)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LabTechAssigned)
+            @Html.DisplayFor(model => model.Test.LabTechAssigned)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MudType)
+            @Html.DisplayNameFor(model => model.Test.MudType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MudType)
+            @Html.DisplayFor(model => model.Test.MudType)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MudSystemName)
+            @Html.DisplayNameFor(model => model.Test.MudSystemName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MudSystemName)
+            @Html.DisplayFor(model => model.Test.MudSystemName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReceivedDate)
+            @Html.DisplayNameFor(model => model.Test.ReceivedDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReceivedDate)
+            @Html.DisplayFor(model => model.Test.ReceivedDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ExposureTime)
+            @Html.DisplayNameFor(model => model.Test.ExposureTime)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ExposureTime)
+            @Html.DisplayFor(model => model.Test.ExposureTime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateStarted)
+            @Html.DisplayNameFor(model => model.Test.DateStarted)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateStarted)
+            @Html.DisplayFor(model => model.Test.DateStarted)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateEnded)
+            @Html.DisplayNameFor(model => model.Test.DateEnded)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateEnded)
+            @Html.DisplayFor(model => model.Test.DateEnded)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeOut)
+            @Html.DisplayNameFor(model => model.Test.TimeOut)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TimeOut)
+            @Html.DisplayFor(model => model.Test.TimeOut)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TestComments)
+            @Html.DisplayNameFor(model => model.Test.TestComments)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TestComments)
+            @Html.DisplayFor(model => model.Test.TestComments)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Results)
+           <h1>Test Results</h1>
         </dt>
 
         <dd class="col-sm-10">
             <table class="table">
-                <tr>
-                    <th>Compound</th>
-                    <th>Test Temp</th>
-                </tr>
 
-        @foreach (var item in Model.Results)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Compound.CompoundName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem=> item.TestTemp)
-                </td>
-            </tr>
-        }
+                @foreach (var item in Model.TestResults)
+                {
+                    /*header row for compound*/
+                    <tr> 
+                        <th>Compound </th>
+                    </tr>
+
+                    <tr>
+                        @*<th>@Html.DisplayFor(model => model.Compound.CompoundName)</th>*@
+                        <td>@Html.DisplayFor(modelItem => item.Compound)</td>
+                    </tr>
+                    <tr>
+                        <th>Test Temp</th>
+                        <th>Sample 1</th>
+                        <th>Sample 2</th>
+                        <th>Sample 3</th>
+                    </tr>                        
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TestTemp)
+                        </td>
+                    </tr>
+  
+                    /* then start looping through the test temps*/
+
+                    @foreach (var result in Model.TestResults)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => result.TestTemp)
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1Hardness_a)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1Hardness_b)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1Thickness)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1WtAir_a)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1WtAir_b)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1WtWater_a)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1WtWater_b)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1_25Mod)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1_50Mod)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1_100Mod)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1_elongation)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => result.S1_tensile)</td>
+                        </tr>
+                    }
+  
+                }
 
 
 
@@ -109,6 +164,6 @@
 
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.TestID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Test.TestID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
