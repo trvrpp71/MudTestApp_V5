@@ -35,20 +35,17 @@ namespace MudTestApp.Controllers
             }
 
             //tp modified code
-
-            var viewModel = new TestIndexData();
-
-            viewModel.Test = await _context.Tests
-                .Include(r => r.Results)
-                    .ThenInclude(c => c.Compound)
+            var test = await _context.Tests
+                .Include(s => s.Results)
+                    .ThenInclude(r => r.Compound)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.TestID == id);
-            if (viewModel == null)
+            if (test == null)
             {
                 return NotFound();
             }
 
-            return View(viewModel);
+            return View(test);
         }
 
         // GET: Tests/Create
