@@ -76,35 +76,47 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TestComments)
         </dd>
+     </dl>
 
-                @foreach (var test in Model.Results)
-                {            
-                    <table class="table">
-                        <tr>
-                            <th>Compound</th>
-                            <th>Test Temp</th>
-                        </tr>
+     <h2>Test Results</h2>
+
+    @foreach (var test in Model.Results)
+    {            
+        <table class="table">
+            <tr>
+                <th>Compound</th>
+                <th>Test Temp</th>
+            </tr>
                     
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => test.Compound.CompoundName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem=> test.TestTemp)
-                            </td>
-                        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => test.Compound.CompoundName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> test.TestTemp)
+                </td>
+            </tr>
+            <tr>
+                <ul> 
+                    <li>Sample Thickness: @Html.DisplayFor(modelItem=> test.S1Thickness)</li>
+                    <li>Hardness(A): @Html.DisplayFor(modelItem=> test.S1Hardness_a)</li>
+                    <li>Hardness(B): @Html.DisplayFor(modelItem=> test.S1Hardness_b)</li>
+                    <li>Air Weight(A): @Html.DisplayFor(modelItem=> test.S1WtAir_a)</li>
+                    <li>Air Weight(B): @Html.DisplayFor(modelItem=> test.S1WtAir_b)</li>
+                    <li>Water Weight(A): @Html.DisplayFor(modelItem=> test.S1WtWater_a)</li>
+                    <li>Water Weight(B): @Html.DisplayFor(modelItem=> test.S1WtWater_b)</li>
+                    <li>25% Modulus: @Html.DisplayFor(modelItem=> test.S1_25Mod)</li>
+                    <li>50% Moduluss @Html.DisplayFor(modelItem=> test.S1_50Mod)</li>
+                    <li>100% Modulus: @Html.DisplayFor(modelItem=> test.S1_100Mod)</li>
+                    <li>Elongation: @Html.DisplayFor(modelItem=> test.S1_elongation)</li>
+                    <li>Tensile: @Html.DisplayFor(modelItem=> test.S1_tensile)</li>
 
-                        <tr>
-                            <td>
-                                <ul>
-                                    <li>Hardness A: @Html.DisplayFor(modelItem=> test.S1Hardness_a) </li>
-                                    <li>Hardness B: @Html.DisplayFor(modelItem=> test.S1Hardness_b) </li>
-                                    <li>Thickness: @Html.DisplayFor(modelItem=> test.S1Thickness) </li>
-                                </ul>
-                            </td>
-                         </tr>
-                    </table>
-                }
+                </ul>
+            </tr>
+
+
+        </table>
+    }
 
 
 
@@ -112,7 +124,7 @@
 
 
 
-    </dl>
+
 
 </div>
 <div>
