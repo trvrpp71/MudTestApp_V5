@@ -27,7 +27,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? CompoundId, int? TestResultsID)  //id = test ID
         {
             if (id == null)
             {
@@ -35,17 +35,27 @@ namespace MudTestApp.Controllers
             }
 
             //tp modified code
-            var test = await _context.Tests
-                .Include(s => s.Results)
-                    .ThenInclude(r => r.Compound)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.TestID == id);
-            if (test == null)
+
+            var viewModel = new TestIndexData();
+
+            viewModel.Test = await _context.Tests
+                .Include(i => i.Results)
+                .ThenInclude(i => i.Compound)
+                .FirstOrDefaultAsync(t => t.TestID == id);
+
+
+
+            //var test = 
+            //    .Include(s => s.Results)
+            //        .ThenInclude(r => r.Compound)
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync(m => m.TestID == id);
+            if (viewModel == null)
             {
                 return NotFound();
             }
 
-            return View(test);
+            return View(viewModel);
         }
 
         // GET: Tests/Create
