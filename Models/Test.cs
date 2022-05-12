@@ -7,6 +7,7 @@ namespace MudTestApp.Models
 {
     public class Test
     {
+        
         public int TestID { get; set; }
 
         [Required]

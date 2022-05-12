@@ -78,8 +78,13 @@
         </dd>
      </dl>
 
-     <h2>Test Results</h2>
+     <div>
+    <a asp-action="Edit" asp-route-id="@Model.Test.TestID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
 
+     <h2>Test Results</h2>
+    <a class="btn btn-outline-success" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.Test.TestID">Add New Test Result</a>
    
     <table class="table">
 
@@ -176,7 +181,4 @@
 
 
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Test.TestID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
