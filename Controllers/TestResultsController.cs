@@ -66,7 +66,9 @@ namespace MudTestApp.Controllers
             {
                 _context.Add(testResults);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Details", "Tests", new { id = testResults.TestID });
             }
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
             ViewData["TestID"] = new SelectList(_context.Tests, "TestID", "Customer", testResults.TestID);
