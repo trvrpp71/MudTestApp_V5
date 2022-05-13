@@ -76,46 +76,109 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Test.TestComments)
         </dd>
+     </dl>
 
-                @foreach (var test in Model.Results)
-                {            
-                    <table class="table">
-                        <tr>
-                            <th>Compound</th>
-                            <th>Test Temp</th>
-                        </tr>
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => test.Compound.CompoundName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem=> test.TestTemp)
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <ul>
-                                    <li>Hardness A: @Html.DisplayFor(modelItem=> test.S1Hardness_a) </li>
-                                    <li>Hardness B: @Html.DisplayFor(modelItem=> test.S1Hardness_b) </li>
-                                    <li>Thickness: @Html.DisplayFor(modelItem=> test.S1Thickness) </li>
-                                </ul>
-                            </td>
-                         </tr>
-                    </table>
-                }
-
-
-
-
-
-
-
-    </dl>
-
-</div>
-<div>
+     <div>
     <a asp-action="Edit" asp-route-id="@Model.Test.TestID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+     <h2>Test Results</h2>
+    <a class="btn btn-outline-success" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.Test.TestID">Add New Test Result</a>
+   
+    <table class="table">
+
+            <th>Compound</th>
+            <th>Test Temp</th>
+            <th></th>
+            <th>Thickness</th>
+            <th>Hardness(a)</th>
+            <th>Hardness(b)</th>
+            <th>Air Wt(a)</th>
+            <th>Air Wt(b)</th>
+            <th>Water Wt(a)</th>
+            <th>Water Wt(b)</th>
+            <th>25&#37 Mod</th>
+            <th>50&#37 Mod</th>
+            <th>100&#37 Mod</th>
+            <th>Elong</th>
+            <th>Tensile</th>
+            <th></th>
+
+
+
+            @foreach (var item in Model.Test.Results)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>S1</td>
+                    <td></td>
+                    <td>@Html.DisplayFor(modelItem => item.S1Thickness)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1Hardness_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1Hardness_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1WtAir_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1WtAir_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1WtWater_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1WtWater_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1_25Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1_50Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1_100Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1_elongation)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S1_tensile)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>S2</td>
+                    <td></td>
+                    <td>@Html.DisplayFor(modelItem => item.S2Thickness)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2Hardness_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2Hardness_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2WtAir_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2WtAir_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2WtWater_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2WtWater_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2_25Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2_50Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2_100Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2_elongation)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S2_tensile)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>S3</td>
+                    <td></td>
+                    <td>@Html.DisplayFor(modelItem => item.S3Thickness)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3Hardness_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3Hardness_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3WtAir_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3WtAir_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3WtWater_a)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3WtWater_b)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3_25Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3_50Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3_100Mod)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3_elongation)</td>
+                    <td>@Html.DisplayFor(modelItem => item.S3_tensile)</td>
+                    <td><a asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> | Delete</td>
+                </tr>
+            }
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+</div>
+

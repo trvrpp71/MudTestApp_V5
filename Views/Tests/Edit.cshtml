@@ -4,9 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Test</h4>
+<h4>Editing Test Number: @Html.DisplayFor(model => model.TestID)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -76,7 +74,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+     <a asp-action="Details" asp-route-id="@Model.TestID">Cancel</a>
 </div>
 
 @section Scripts {
