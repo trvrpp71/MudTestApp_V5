@@ -55,22 +55,22 @@ namespace MudTestApp.Data
                 {
                     Customer = "Weatherford", CustomerContact = "Joe", LabTechAssigned = "Patrick",
                     MudType = "OBM", MudSystemName = "WARP", ReceivedDate = DateTime.Parse("2014-03-10"),
-                    DateStarted = DateTime.Parse("2014-03-11"), DateEnded = DateTime.Parse("2014-03-19"),
-                    TimeOut = DateTime.Parse("14:52:00"), ExposureTime = "192 hours"
+                    DateStarted = DateTime.Parse("2014-03-11"), DateEnded = DateTime.Parse("2014-03-19 11:43"),
+                    ExposureTime = "192 hours"
                 },
                 new Test
                 {
                     Customer = "Pro Directional", CustomerContact = "Marty", LabTechAssigned = "Brandon",
                     MudType = "WBM", ReceivedDate = DateTime.Parse("2014-04-16"),
-                    DateStarted = DateTime.Parse("2014-04-16"), DateEnded = DateTime.Parse("2014-04-19"),
-                    TimeOut = DateTime.Parse("10:50:00"), ExposureTime = "72 hours"
+                    DateStarted = DateTime.Parse("2014-04-16"), DateEnded = DateTime.Parse("2014-04-19 15:25"),
+                    ExposureTime = "72 hours"
                 },
                 new Test
                 {
                     Customer = "MPact", CustomerContact = "Russ", LabTechAssigned = "Patrick", MudType = "OBM",
                     MudSystemName = "Versadril", ReceivedDate = DateTime.Parse("2014-07-30"),
-                    DateStarted = DateTime.Parse("2014-08-02"), DateEnded = DateTime.Parse("2014-08-10"),
-                    TimeOut = DateTime.Parse("14:52:00"), ExposureTime = "192 hours"
+                    DateStarted = DateTime.Parse("2014-08-02"), DateEnded = DateTime.Parse("2014-08-10 09:18"),
+                    ExposureTime = "192 hours"
                 }
             };
             foreach (Test t in tests)

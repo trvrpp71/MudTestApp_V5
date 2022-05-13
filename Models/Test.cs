@@ -37,11 +37,12 @@ namespace MudTestApp.Models
         [DataType(DataType.Date), Display(Name = "Started Immersion on"), DisplayFormat(DataFormatString = "{0:dd-MMM-yy}")]
         public DateTime? DateStarted { get; set; }
 
-        [DataType(DataType.Date), Display(Name = "Removed from Fluid on"), DisplayFormat(DataFormatString = "{0:dd-MMM-yy}")]
+        //[DataType(DataType.Date), Display(Name = "Removed from Fluid on"), DisplayFormat(DataFormatString = "{0:dd-MMM-yy HH:mm}",ApplyFormatInEditMode =true),]
+        [DataType(DataType.DateTime), Display(Name = "Removed from Fluid on")]
         public DateTime? DateEnded { get; set; }
 
-        [DataType(DataType.Date), Display(Name = "Time of Removal"), DisplayFormat(DataFormatString = "{0:00}")]
-        public DateTime? TimeOut { get; set; }
+        //[DataType(DataType.Date), Display(Name = "Time of Removal"), DisplayFormat(DataFormatString = "{HH:mm}")]
+        //public DateTime? TimeOut { get; set; }
 
         [Display(Name = "Comments")]
         public string? TestComments { get; set; }
