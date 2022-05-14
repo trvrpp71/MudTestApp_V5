@@ -51,7 +51,7 @@ namespace MudTestApp.Controllers
         public IActionResult Create()
         {
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName");
-            ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer");
+            //ViewData["TestID"] = new SelectList(_context.Tests, "TestID", "Customer");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace MudTestApp.Controllers
                 return RedirectToAction("Details", "Tests", new { id = testResults.TestID });
             }
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
-            ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
+            //ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
             return View(testResults);
         }
 
@@ -89,7 +89,7 @@ namespace MudTestApp.Controllers
                 return NotFound();
             }
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
-            ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
+            //ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
             return View(testResults);
         }
 
@@ -126,7 +126,7 @@ namespace MudTestApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
-            ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
+            //ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
             return View(testResults);
         }
 

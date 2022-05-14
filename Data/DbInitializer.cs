@@ -1,5 +1,4 @@
-﻿#nullable disable
-
+﻿
 using MudTestApp.Models;
 using System;
 using System.Linq;
@@ -17,6 +16,33 @@ namespace MudTestApp.Data
             {
                 return; //db has been seeded
             }
+            //seed Customer Table
+
+            var customer = new Customer[]
+            {
+                new Customer {
+                    CompanyName = "Mpact",
+                    ContactName = "Toby"
+                },
+                new Customer {
+                    CompanyName="Pro Directional",
+                    ContactName = "Missy Tobias"
+                },
+                new Customer {
+                    CompanyName= "Altitude",
+                    ContactName = null
+                },
+                new Customer {
+                    CompanyName = "R&D",
+                    ContactName = null
+                }
+            };
+            foreach (Customer c in customer)
+            {
+                context.Customers.Add(c);
+            }
+            context.SaveChanges();  
+
 
             //seed Compound Table
             var compounds = new Compound[]
@@ -48,27 +74,34 @@ namespace MudTestApp.Data
             }
             context.SaveChanges();
 
+            /*removed data from test model
+            Customer = "Weatherford", CustomerContact = "Joe", 
+            Customer = "Pro Directional", CustomerContact = "Marty",
+            Customer = "MPact", CustomerContact = "Russ", 
+            */
+
+
             //Seed Test Table
             var tests = new Test[]
             {
                 new Test
                 {
-                    Customer = "Weatherford", CustomerContact = "Joe", LabTechAssigned = "Patrick",
+                    CustomerID = 1, LabTechAssigned = "Patrick",
                     MudType = "OBM", MudSystemName = "WARP", ReceivedDate = DateTime.Parse("2014-03-10"),
                     DateStarted = DateTime.Parse("2014-03-11"), DateEnded = DateTime.Parse("2014-03-19 11:43"),
                     ExposureTime = "192 hours"
                 },
                 new Test
                 {
-                    Customer = "Pro Directional", CustomerContact = "Marty", LabTechAssigned = "Brandon",
+                    CustomerID =2,LabTechAssigned = "Brandon",
                     MudType = "WBM", ReceivedDate = DateTime.Parse("2014-04-16"),
                     DateStarted = DateTime.Parse("2014-04-16"), DateEnded = DateTime.Parse("2014-04-19 15:25"),
                     ExposureTime = "72 hours"
                 },
                 new Test
                 {
-                    Customer = "MPact", CustomerContact = "Russ", LabTechAssigned = "Patrick", MudType = "OBM",
-                    MudSystemName = "Versadril", ReceivedDate = DateTime.Parse("2014-07-30"),
+                    CustomerID=3,LabTechAssigned = "Patrick",
+                    MudType = "OBM",MudSystemName = "Versadril", ReceivedDate = DateTime.Parse("2014-07-30"),
                     DateStarted = DateTime.Parse("2014-08-02"), DateEnded = DateTime.Parse("2014-08-10 09:18"),
                     ExposureTime = "192 hours"
                 }

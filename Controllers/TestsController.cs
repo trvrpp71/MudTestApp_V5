@@ -23,11 +23,19 @@ namespace MudTestApp.Controllers
         // GET: Tests
         public async Task<IActionResult> Index()
         {
+            //var viewModel = new TestIndexData();
+
+            //viewModel.Test = await _context.Tests
+            //    .Include(i => i.Customer)
+            //    .AsNoTracking()
+            //    .OrderBy(i => i.TestID)
+            //    .ToListAsync();
             return View(await _context.Tests.ToListAsync());
+
         }
 
         // GET: Tests/Details/5
-        public async Task<IActionResult> Details(int? id, int? CompoundId, int? TestResultsID)  //id = test ID
+        public async Task<IActionResult> Details(int? id, int? CustomerID, int? CompoundId, int? TestResultsID)  //id = test ID
         {
             if (id == null)
             {
@@ -39,8 +47,9 @@ namespace MudTestApp.Controllers
             var viewModel = new TestIndexData();
 
             viewModel.Test = await _context.Tests
+                .Include(i => i.Customer)
                 .Include(i => i.Results)
-                .ThenInclude(i => i.Compound)
+                    .ThenInclude(i => i.Compound)
                 .FirstOrDefaultAsync(t => t.TestID == id);
 
 
@@ -70,7 +79,8 @@ namespace MudTestApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            [Bind("LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
             try
             {
@@ -118,7 +128,9 @@ namespace MudTestApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestID,Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")]
+
         {
             if (id != test.TestID)
             {

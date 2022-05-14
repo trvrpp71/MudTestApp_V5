@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<MudTestApp.Models.Test>
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -16,11 +15,14 @@
                 @Html.DisplayNameFor(Model => Model.TestID)
             </th>
             <th>
+                @Html.DisplayNameFor(Model => Model.Customer)
+            </th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.Customer)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerContact)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.LabTechAssigned)
             </th>
@@ -43,11 +45,14 @@
                 @Html.DisplayFor(modelItem => item.TestID)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+            </td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Customer)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerContact)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.LabTechAssigned)
             </td>
