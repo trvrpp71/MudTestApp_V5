@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MudTestApp.Models.Test>
+﻿@*@model IEnumerable<MudTestApp.Models.Test>*@
+
+@model IEnumerable<MudTestApp.Models.TestViewModels.TestIndexViewModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -12,28 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(Model => Model.TestID)
+                @Html.DisplayNameFor(Model => Model.TestVm.TestID)
             </th>
             <th>
-                @Html.DisplayNameFor(Model => Model.Customer)
-            </th>
-@*            <th>
-                @Html.DisplayNameFor(model => model.Customer)
+                @Html.DisplayNameFor(Model => Model.CustomerVm.CompanyName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerContact)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.LabTechAssigned)
+                @Html.DisplayNameFor(model => model.TestVm.LabTechAssigned)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MudType)
+                @Html.DisplayNameFor(model => model.TestVm.MudType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MudSystemName)
+                @Html.DisplayNameFor(model => model.TestVm.MudSystemName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReceivedDate)
+                @Html.DisplayNameFor(model => model.TestVm.ReceivedDate)
             </th>
             <th></th>
         </tr>
@@ -42,34 +38,28 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TestID)
+                @Html.DisplayFor(modelItem => item.TestVm.TestID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Customer.CompanyName)
-            </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Customer)
+                @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerContact)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.LabTechAssigned)
+                @Html.DisplayFor(modelItem => item.TestVm.LabTechAssigned)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MudType)
+                @Html.DisplayFor(modelItem => item.TestVm.MudType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MudSystemName)
+                @Html.DisplayFor(modelItem => item.TestVm.MudSystemName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReceivedDate)
+                @Html.DisplayFor(modelItem => item.TestVm.ReceivedDate)
             </td>
             
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TestID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TestID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TestID">Delete</a>
+@*                <a asp-action="Edit" asp-route-id="@item.Test.TestID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Test.TestID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Test.TestID">Delete</a>*@
             </td>
         </tr>
 }

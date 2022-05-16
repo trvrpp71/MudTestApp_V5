@@ -21,16 +21,15 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( )
         {
-            //var viewModel = new TestIndexData();
 
-            //viewModel.Test = await _context.Tests
-            //    .Include(i => i.Customer)
-            //    .AsNoTracking()
-            //    .OrderBy(i => i.TestID)
-            //    .ToListAsync();
-            return View(await _context.Tests.ToListAsync());
+            var testIndexData = from t in _context.Tests
+                            join c in _context.Customers on t.CustomerID equals c.CustomerID into t2
+                            from c in t2.DefaultIfEmpty()
+                            select new TestIndexViewModel { TestVm = t, CustomerVm = c };
+            return View(testIndexData);
+
 
         }
 
@@ -44,7 +43,7 @@ namespace MudTestApp.Controllers
 
             //tp modified code
 
-            var viewModel = new TestIndexData();
+            var viewModel = new TestDetailData();
 
             viewModel.Test = await _context.Tests
                 .Include(i => i.Customer)

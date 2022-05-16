@@ -10,6 +10,9 @@ namespace MudTestApp.Models
         
         public int TestID { get; set; }
 
+        public int CustomerID { get; set; }  //foreign key
+
+
         //[Required]
         //public string? Customer { get; set; }
 
@@ -18,7 +21,6 @@ namespace MudTestApp.Models
         
         //using customer table instead
 
-        public int CustomerID { get; set; } //foreign key        
 
         [Display(Name = "Lab Tech")]
         public string? LabTechAssigned { get; set; }
