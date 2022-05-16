@@ -69,6 +69,12 @@ namespace MudTestApp.Controllers
         // GET: Tests/Create
         public IActionResult Create()
         {
+            var CustomerList = _context.Customers.ToList();
+            if(CustomerList!=null)
+            {
+                ViewBag.CustomerList = _context.Customers.ToList();
+            }
+        
             return View();
         }
 

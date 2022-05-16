@@ -5,6 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MudTestApp.Models
 {
+    /* 
+     * 1 customer can have many tests 
+     * 1 test per customer
+     * 1 test can have mutliple compounds
+     * 1 test can have mutliple results
+     
+     */
     public class Test
     {
         
@@ -12,14 +19,6 @@ namespace MudTestApp.Models
 
         public int CustomerID { get; set; }  //foreign key
 
-
-        //[Required]
-        //public string? Customer { get; set; }
-
-        //[Display(Name ="Customer Contact")]
-        //public string? CustomerContact { get; set; }
-        
-        //using customer table instead
 
 
         [Display(Name = "Lab Tech")]

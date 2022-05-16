@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MudTestApp.Models
 {
+    
+    //1 customer to many tests therefore a 1-to-many relationship with tests
+
     public class Customer
     {
         public int CustomerID { get; set; }
@@ -14,7 +17,7 @@ namespace MudTestApp.Models
 
         public ICollection<Test> Tests { get; set; }
 
-        //1 customer to many tests
+        
 
     }
 }
