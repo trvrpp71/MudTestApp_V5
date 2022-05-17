@@ -51,13 +51,6 @@ namespace MudTestApp.Controllers
                     .ThenInclude(i => i.Compound)
                 .FirstOrDefaultAsync(t => t.TestID == id);
 
-
-
-            //var test = 
-            //    .Include(s => s.Results)
-            //        .ThenInclude(r => r.Compound)
-            //    .AsNoTracking()
-            //    .FirstOrDefaultAsync(m => m.TestID == id);
             if (viewModel == null)
             {
                 return NotFound();
@@ -69,11 +62,8 @@ namespace MudTestApp.Controllers
         // GET: Tests/Create
         public IActionResult Create()
         {
-            var CustomerList = _context.Customers.ToList();
-            if(CustomerList!=null)
-            {
-                ViewBag.CustomerList = _context.Customers.ToList();
-            }
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CompanyName");
+
         
             return View();
         }
@@ -84,8 +74,8 @@ namespace MudTestApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
-            [Bind("LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+
+            [Bind("CustomerID, LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
             try
             {
@@ -125,6 +115,9 @@ namespace MudTestApp.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CompanyName", test.CustomerID);
+
             return View(test);
         }
 
@@ -133,7 +126,7 @@ namespace MudTestApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestID,CustomerID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
             //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")]
 
         {

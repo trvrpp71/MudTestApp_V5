@@ -1,5 +1,4 @@
-﻿@*@model MudTestApp.Models.Test*@
-@model MudTestApp.Models.TestViewModels.TestIndexViewModel
+﻿@model MudTestApp.Models.Test
 
 @{
     ViewData["Title"] = "Create";
@@ -24,43 +23,44 @@
                 <span asp-validation-for="CustomerContact" class="text-danger"></span>
             </div>*@
             <div classs="form-group">
-                <label for="CustomerID">Customer</label>
-                @Html.DropDownList("CompanyName", new SelectList(ViewBag.CustomerList, "CustomerID", "CompanyName"))
+                <label for="CustomerID" class="control-label"></label>
+                @*@Html.DropDownList("CompanyName", new SelectList(ViewBag.CustomerList, "CustomerID", "CompanyName"))*@
+                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.LabTechAssigned" class="control-label"></label>
-                <input asp-for="@Model.TestVm.LabTechAssigned" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.LabTechAssigned" class="text-danger"></span>
+                <label asp-for="LabTechAssigned" class="control-label"></label>
+                <input asp-for="LabTechAssigned" class="form-control" />
+                <span asp-validation-for="LabTechAssigned" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.MudType" class="control-label"></label>
-                <input asp-for="@Model.TestVm.MudType" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.MudType" class="text-danger"></span>
+                <label asp-for="MudType" class="control-label"></label>
+                <input asp-for="MudType" class="form-control" />
+                <span asp-validation-for="MudType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.MudSystemName" class="control-label"></label>
-                <input asp-for="@Model.TestVm.MudSystemName" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.MudSystemName" class="text-danger"></span>
+                <label asp-for="MudSystemName" class="control-label"></label>
+                <input asp-for="MudSystemName" class="form-control" />
+                <span asp-validation-for="MudSystemName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.ReceivedDate" class="control-label"></label>
-                <input asp-for="@Model.TestVm.ReceivedDate" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.ReceivedDate" class="text-danger"></span>
+                <label asp-for="ReceivedDate" class="control-label"></label>
+                <input asp-for="ReceivedDate" class="form-control" />
+                <span asp-validation-for="ReceivedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.ExposureTime" class="control-label"></label>
-                <input asp-for="@Model.TestVm.ExposureTime" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.ExposureTime" class="text-danger"></span>
+                <label asp-for="ExposureTime" class="control-label"></label>
+                <input asp-for="ExposureTime" class="form-control" />
+                <span asp-validation-for="ExposureTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.DateStarted" class="control-label"></label>
-                <input asp-for="@Model.TestVm.DateStarted" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.DateStarted" class="text-danger"></span>
+                <label asp-for="DateStarted" class="control-label"></label>
+                <input asp-for="DateStarted" class="form-control" />
+                <span asp-validation-for="DateStarted" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TestVm.DateEnded" class="control-label"></label>
-                <input asp-for="@Model.TestVm.DateEnded" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.DateEnded" class="text-danger"></span>
+                <label asp-for="DateEnded" class="control-label"></label>
+                <input asp-for="DateEnded" class="form-control" />
+                <span asp-validation-for="DateEnded" class="text-danger"></span>
             </div>
 @*            <div class="form-group">
                 <label asp-for="TimeOut" class="control-label"></label>
@@ -68,9 +68,9 @@
                 <span asp-validation-for="TimeOut" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="@Model.TestVm.TestComments" class="control-label"></label>
-                <input asp-for="@Model.TestVm.TestComments" class="form-control" />
-                <span asp-validation-for="@Model.TestVm.TestComments" class="text-danger"></span>
+                <label asp-for="TestComments" class="control-label"></label>
+                <input asp-for="TestComments" class="form-control" />
+                <span asp-validation-for="TestComments" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

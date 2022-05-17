@@ -89,7 +89,7 @@ namespace MudTestApp.Controllers
                 return NotFound();
             }
             ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
-            //ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
+            ViewData["TestID"] = new SelectList(_context.Tests, "Customer", "Customer", testResults.TestID);
             return View(testResults);
         }
 
