@@ -13,7 +13,6 @@ namespace MudTestApp.Models.TestViewModels
 
         public IEnumerable<Compound>? Compounds { get; set; } //multiple compounds
 
-
         public IEnumerable<TestResults>? TestResults { get; set; } //multiple tests
     }
 }

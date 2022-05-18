@@ -43,7 +43,7 @@ namespace MudTestApp.Controllers
 
             //tp modified code
 
-            var viewModel = new TestDetailData();
+            var viewModel = new TestDetailViewModel();
 
             viewModel.Test = await _context.Tests
                 .Include(i => i.Customer)
