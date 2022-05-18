@@ -21,13 +21,20 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( )
         {
-            return View(await _context.Tests.ToListAsync());
+
+            var testIndexData = from t in _context.Tests
+                            join c in _context.Customers on t.CustomerID equals c.CustomerID into t2
+                            from c in t2.DefaultIfEmpty()
+                            select new TestIndexViewModel { TestVm = t, CustomerVm = c };
+            return View(testIndexData);
+
+
         }
 
         // GET: Tests/Details/5
-        public async Task<IActionResult> Details(int? id, int? CompoundId, int? TestResultsID)  //id = test ID
+        public async Task<IActionResult> Details(int? id, int? CustomerID, int? CompoundId, int? TestResultsID)  //id = test ID
         {
             if (id == null)
             {
@@ -36,20 +43,14 @@ namespace MudTestApp.Controllers
 
             //tp modified code
 
-            var viewModel = new TestIndexData();
+            var viewModel = new TestDetailData();
 
             viewModel.Test = await _context.Tests
+                .Include(i => i.Customer)
                 .Include(i => i.Results)
-                .ThenInclude(i => i.Compound)
+                    .ThenInclude(i => i.Compound)
                 .FirstOrDefaultAsync(t => t.TestID == id);
 
-
-
-            //var test = 
-            //    .Include(s => s.Results)
-            //        .ThenInclude(r => r.Compound)
-            //    .AsNoTracking()
-            //    .FirstOrDefaultAsync(m => m.TestID == id);
             if (viewModel == null)
             {
                 return NotFound();
@@ -61,6 +62,9 @@ namespace MudTestApp.Controllers
         // GET: Tests/Create
         public IActionResult Create()
         {
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CompanyName");
+
+        
             return View();
         }
 
@@ -70,7 +74,8 @@ namespace MudTestApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+
+            [Bind("CustomerID, LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
             try
             {
@@ -110,6 +115,9 @@ namespace MudTestApp.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CompanyName", test.CustomerID);
+
             return View(test);
         }
 
@@ -118,7 +126,9 @@ namespace MudTestApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestID,Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestID,CustomerID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")]
+
         {
             if (id != test.TestID)
             {

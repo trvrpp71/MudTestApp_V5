@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MudTestApp.Data;
 
 namespace MudTestApp.Migrations
 {
     [DbContext(typeof(MudTestAppContext))]
-    partial class MudTestAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220514194721_AddCustomerTable")]
+    partial class AddCustomerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +85,11 @@ namespace MudTestApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID")
+                    b.Property<string>("CustomerID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CustomerID1")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DateEnded")
@@ -114,7 +120,7 @@ namespace MudTestApp.Migrations
 
                     b.HasKey("TestID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID1");
 
                     b.ToTable("Test");
                 });
@@ -256,9 +262,7 @@ namespace MudTestApp.Migrations
                 {
                     b.HasOne("MudTestApp.Models.Customer", "Customer")
                         .WithMany("Tests")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID1");
 
                     b.Navigation("Customer");
                 });

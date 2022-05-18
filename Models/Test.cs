@@ -5,17 +5,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MudTestApp.Models
 {
+    /* 
+     * 1 customer can have many tests 
+     * 1 test per customer
+     * 1 test can have mutliple compounds
+     * 1 test can have mutliple results
+     
+     */
     public class Test
     {
         
         public int TestID { get; set; }
 
-        [Required]
-        public string? Customer { get; set; }
+        public int CustomerID { get; set; }  //foreign key
 
-        [Display(Name ="Customer Contact")]
-        public string? CustomerContact { get; set; }
-        
+
+
         [Display(Name = "Lab Tech")]
         public string? LabTechAssigned { get; set; }
 
@@ -47,9 +52,11 @@ namespace MudTestApp.Models
         [Display(Name = "Comments")]
         public string? TestComments { get; set; }
 
+        public Customer? Customer { get; set; }
 
         public ICollection<TestResults>?Results { get; set; }
 
+        //Each test can only be associated to one customer
         //Test is a 1-to-many relationships with TestResults
 
         

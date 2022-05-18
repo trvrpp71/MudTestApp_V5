@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MudTestApp.Data;
 
 namespace MudTestApp.Migrations
 {
     [DbContext(typeof(MudTestAppContext))]
-    partial class MudTestAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220514190249_droppedCustomer")]
+    partial class droppedCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,35 +58,12 @@ namespace MudTestApp.Migrations
                     b.ToTable("Compound");
                 });
 
-            modelBuilder.Entity("MudTestApp.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ContactName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CustomerID");
-
-                    b.ToTable("Customer");
-                });
-
             modelBuilder.Entity("MudTestApp.Models.Test", b =>
                 {
                     b.Property<int>("TestID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DateEnded")
                         .HasColumnType("datetime2");
@@ -113,8 +92,6 @@ namespace MudTestApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TestID");
-
-                    b.HasIndex("CustomerID");
 
                     b.ToTable("Test");
                 });
@@ -252,17 +229,6 @@ namespace MudTestApp.Migrations
                     b.ToTable("TestResults");
                 });
 
-            modelBuilder.Entity("MudTestApp.Models.Test", b =>
-                {
-                    b.HasOne("MudTestApp.Models.Customer", "Customer")
-                        .WithMany("Tests")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
             modelBuilder.Entity("MudTestApp.Models.TestResults", b =>
                 {
                     b.HasOne("MudTestApp.Models.Compound", "Compound")
@@ -285,11 +251,6 @@ namespace MudTestApp.Migrations
             modelBuilder.Entity("MudTestApp.Models.Compound", b =>
                 {
                     b.Navigation("Results");
-                });
-
-            modelBuilder.Entity("MudTestApp.Models.Customer", b =>
-                {
-                    b.Navigation("Tests");
                 });
 
             modelBuilder.Entity("MudTestApp.Models.Test", b =>

@@ -11,6 +11,9 @@ namespace MudTestApp.Data
             { }
 
         public DbSet<Test> Tests { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }  
+
         public DbSet<Compound> Compounds { get; set; }
 
         public DbSet<TestResults> Results { get; set; }
@@ -19,6 +22,7 @@ namespace MudTestApp.Data
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Test>().ToTable("Test");
+            modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Compound>().ToTable("Compound");
             modelBuilder.Entity<TestResults>().ToTable("TestResults");
         }
