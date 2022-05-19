@@ -14,7 +14,6 @@ namespace MudTestApp.Models
         public int TestTemp { get; set; }
 
         [Required]
-        [RegularExpression(@"^\d*\.\d{3}\b$")]
         public double S1Thickness { get; set; }
         [Required]
         public double S1Hardness_a { get; set; }

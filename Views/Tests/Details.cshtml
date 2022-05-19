@@ -163,7 +163,7 @@
                     <td>@Html.DisplayFor(modelItem => item.S3_100Mod)</td>
                     <td>@Html.DisplayFor(modelItem => item.S3_elongation)</td>
                     <td>@Html.DisplayFor(modelItem => item.S3_tensile)</td>
-                    <td><a asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> | Delete</td>
+                    <td><a asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> | <a asp-controller="TestResults" asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a> </td>
                 </tr>
             }
 
