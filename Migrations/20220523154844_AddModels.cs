@@ -1,11 +1,9 @@
-﻿#nullable disable
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MudTestApp.Migrations
 {
-    public partial class Updated_ModelDataValidation : Migration
+    public partial class AddModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,26 +28,44 @@ namespace MudTestApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Customer",
+                columns: table => new
+                {
+                    CustomerID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ContactName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customer", x => x.CustomerID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Test",
                 columns: table => new
                 {
                     TestID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Customer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CustomerContact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
                     LabTechAssigned = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MudType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MudSystemName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReceivedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExposureTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateStarted = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateEnded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TimeOut = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateStarted = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateEnded = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TestComments = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Test", x => x.TestID);
+                    table.ForeignKey(
+                        name: "FK_Test_Customer_CustomerID",
+                        column: x => x.CustomerID,
+                        principalTable: "Customer",
+                        principalColumn: "CustomerID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,7 +88,31 @@ namespace MudTestApp.Migrations
                     S1_50Mod = table.Column<int>(type: "int", nullable: false),
                     S1_100Mod = table.Column<int>(type: "int", nullable: false),
                     S1_tensile = table.Column<int>(type: "int", nullable: false),
-                    S1_elongation = table.Column<int>(type: "int", nullable: false)
+                    S1_elongation = table.Column<int>(type: "int", nullable: false),
+                    S2Thickness = table.Column<double>(type: "float", nullable: false),
+                    S2Hardness_a = table.Column<double>(type: "float", nullable: false),
+                    S2Hardness_b = table.Column<double>(type: "float", nullable: false),
+                    S2WtAir_a = table.Column<double>(type: "float", nullable: false),
+                    S2WtAir_b = table.Column<double>(type: "float", nullable: false),
+                    S2WtWater_a = table.Column<double>(type: "float", nullable: false),
+                    S2WtWater_b = table.Column<double>(type: "float", nullable: false),
+                    S2_25Mod = table.Column<int>(type: "int", nullable: false),
+                    S2_50Mod = table.Column<int>(type: "int", nullable: false),
+                    S2_100Mod = table.Column<int>(type: "int", nullable: false),
+                    S2_tensile = table.Column<int>(type: "int", nullable: false),
+                    S2_elongation = table.Column<int>(type: "int", nullable: false),
+                    S3Thickness = table.Column<double>(type: "float", nullable: false),
+                    S3Hardness_a = table.Column<double>(type: "float", nullable: false),
+                    S3Hardness_b = table.Column<double>(type: "float", nullable: false),
+                    S3WtAir_a = table.Column<double>(type: "float", nullable: false),
+                    S3WtAir_b = table.Column<double>(type: "float", nullable: false),
+                    S3WtWater_a = table.Column<double>(type: "float", nullable: false),
+                    S3WtWater_b = table.Column<double>(type: "float", nullable: false),
+                    S3_25Mod = table.Column<int>(type: "int", nullable: false),
+                    S3_50Mod = table.Column<int>(type: "int", nullable: false),
+                    S3_100Mod = table.Column<int>(type: "int", nullable: false),
+                    S3_tensile = table.Column<int>(type: "int", nullable: false),
+                    S3_elongation = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,6 +130,11 @@ namespace MudTestApp.Migrations
                         principalColumn: "TestID",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Test_CustomerID",
+                table: "Test",
+                column: "CustomerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TestResults_CompoundID",
@@ -112,6 +157,9 @@ namespace MudTestApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Test");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }
