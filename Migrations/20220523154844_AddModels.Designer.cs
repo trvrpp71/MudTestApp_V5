@@ -10,8 +10,8 @@ using MudTestApp.Data;
 namespace MudTestApp.Migrations
 {
     [DbContext(typeof(MudTestAppContext))]
-    [Migration("20220514195207_FixedCustomerID")]
-    partial class FixedCustomerID
+    [Migration("20220523154844_AddModels")]
+    partial class AddModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
