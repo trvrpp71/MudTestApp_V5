@@ -19,7 +19,8 @@ namespace MudTestApp.Models
 
         public int CustomerID { get; set; }  //foreign key
 
-
+        [Display(Name = "Contact")]
+        public string? ContactName { get; set; }    
 
         [Display(Name = "Lab Tech")]
         public string? LabTechAssigned { get; set; }

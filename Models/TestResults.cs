@@ -89,6 +89,10 @@ namespace MudTestApp.Models
         [Required]
         public int S3_elongation { get; set; }
 
+        //general observations
+        public string? Observations { get; set; }
+
+
         public Test Test { get; set; } //nav prop
         public Compound Compound { get; set; }  //nav prop
 
