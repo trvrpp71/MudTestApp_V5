@@ -7,12 +7,12 @@ namespace MudTestApp.Models.TestViewModels
     public class TestDetailViewModel
     {
 
-        public Test Test { get; set; }    //1 test
+        public Test TestDVm { get; set; }    //1 test
 
-        public Customer Customer { get; set; } // 1 customer
+        public Customer CustomerDVm { get; set; } // 1 customer
 
-        public IEnumerable<Compound>? Compounds { get; set; } //multiple compounds
+        public IEnumerable<Compound>? CompoundsDVm { get; set; } //multiple compounds
 
-        public IEnumerable<TestResults>? TestResults { get; set; } //multiple tests
+        public IEnumerable<TestResults>? TestResultsDVm { get; set; } //multiple tests
     }
 }

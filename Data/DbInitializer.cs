@@ -22,19 +22,15 @@ namespace MudTestApp.Data
             {
                 new Customer {
                     CompanyName = "Mpact",
-                    ContactName = "Toby"
                 },
                 new Customer {
                     CompanyName="Pro Directional",
-                    ContactName = "Missy Tobias"
                 },
                 new Customer {
                     CompanyName= "Altitude",
-                    ContactName = null
                 },
                 new Customer {
                     CompanyName = "R&D",
-                    ContactName = null
                 }
             };
             foreach (Customer c in customer)
@@ -86,21 +82,21 @@ namespace MudTestApp.Data
             {
                 new Test
                 {
-                    CustomerID = 1, LabTechAssigned = "Patrick",
+                    CustomerID = 1, ContactName="Andrew", LabTechAssigned = "Patrick",
                     MudType = "OBM", MudSystemName = "WARP", ReceivedDate = DateTime.Parse("2014-03-10"),
                     DateStarted = DateTime.Parse("2014-03-11"), DateEnded = DateTime.Parse("2014-03-19 11:43"),
                     ExposureTime = "192 hours"
                 },
                 new Test
                 {
-                    CustomerID =2,LabTechAssigned = "Brandon",
+                    CustomerID =2,ContactName="Joe F", LabTechAssigned = "Brandon",
                     MudType = "WBM", ReceivedDate = DateTime.Parse("2014-04-16"),
                     DateStarted = DateTime.Parse("2014-04-16"), DateEnded = DateTime.Parse("2014-04-19 15:25"),
                     ExposureTime = "72 hours"
                 },
                 new Test
                 {
-                    CustomerID=3,LabTechAssigned = "Patrick",
+                    CustomerID=3,ContactName="Someone", LabTechAssigned = "Patrick",
                     MudType = "OBM",MudSystemName = "Versadril", ReceivedDate = DateTime.Parse("2014-07-30"),
                     DateStarted = DateTime.Parse("2014-08-02"), DateEnded = DateTime.Parse("2014-08-10 09:18"),
                     ExposureTime = "192 hours"
@@ -141,7 +137,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations="None"
                 },
                 new TestResults
                 {
@@ -153,7 +150,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations="very swollen and soft"
                 },
                 new TestResults
                 {
@@ -165,7 +163,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                      S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations ="super hard"
                 },
 
                 new TestResults
@@ -178,7 +177,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations = "normal looking"
                 },
 
                 new TestResults
@@ -191,7 +191,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations = null
                 },
                 new TestResults
                 {
@@ -203,7 +204,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations = "rubber is very pliable"
                 },
 
                 new TestResults
@@ -216,7 +218,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 177, S2_50Mod = 386, S2_100Mod = 980, S2_elongation = 196, S2_tensile = 2241,
                     S3Thickness = 2.04, S3Hardness_a = 90,
                     S3Hardness_b = 85, S3WtAir_a = 0.707, S3WtAir_b = 0.801, S3WtWater_a = 0.110, S3WtWater_b = 0.105,
-                    S3_25Mod = 177, S3_50Mod = 386, S3_100Mod = 980, S3_elongation = 196, S3_tensile = 2241
+                    S3_25Mod = 177, S3_50Mod = 386, S3_100Mod = 980, S3_elongation = 196, S3_tensile = 2241,
+                    Observations = null
                 },
                 new TestResults
                 {
@@ -228,7 +231,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 60, S2_50Mod = 134, S2_100Mod = 272, S2_elongation = 359, S2_tensile = 2048,
                     S3Thickness = 2.11, S3Hardness_a = 79,
                     S3Hardness_b = 71, S3WtAir_a = 0.727, S3WtAir_b = 0.811, S3WtWater_a = 0.108, S3WtWater_b = 0.099,
-                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048
+                    S3_25Mod = 60, S3_50Mod = 134, S3_100Mod = 272, S3_elongation = 359, S3_tensile = 2048,
+                    Observations = "normal looking"
                 },
 
                 new TestResults
@@ -241,7 +245,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 177, S2_50Mod = 386, S2_100Mod = 980, S2_elongation = 196, S2_tensile = 2241,
                     S3Thickness = 2.04, S3Hardness_a = 90,
                     S3Hardness_b = 85, S3WtAir_a = 0.707, S3WtAir_b = 0.801, S3WtWater_a = 0.110, S3WtWater_b = 0.105,
-                    S3_25Mod = 177, S3_50Mod = 386, S3_100Mod = 980, S3_elongation = 196, S3_tensile = 2241
+                    S3_25Mod = 177, S3_50Mod = 386, S3_100Mod = 980, S3_elongation = 196, S3_tensile = 2241,
+                    Observations = "blisters noted on 2 of 3 samples"
                 },
                 new TestResults
                 {
@@ -253,7 +258,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 200, S2_50Mod = 300, S2_100Mod = 400, S2_elongation = 268, S2_tensile = 1965,
                     S3Thickness = 2.32, S3Hardness_a = 89,
                      S3Hardness_b = 92, S3WtAir_a = 0.715, S3WtAir_b = 0.790, S3WtWater_a = 0.1112, S3WtWater_b = 0.115,
-                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965
+                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965,
+                    Observations = "nothing unusual"
                 },
                 new TestResults
                 {
@@ -265,7 +271,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 200, S2_50Mod = 300, S2_100Mod = 400, S2_elongation = 268, S2_tensile = 1965,
                     S3Thickness = 2.32, S3Hardness_a = 89,
                      S3Hardness_b = 92, S3WtAir_a = 0.715, S3WtAir_b = .790, S3WtWater_a = 0.1112, S3WtWater_b = 0.115,
-                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965
+                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965,
+                    Observations = null
                 },
                 new TestResults
                 {
@@ -277,7 +284,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 200, S2_50Mod = 300, S2_100Mod = 400, S2_elongation = 268, S2_tensile = 1965,
                     S3Thickness = 2.32, S3Hardness_a = 89,
                      S3Hardness_b = 92, S3WtAir_a = 0.715, S3WtAir_b = 0.790, S3WtWater_a = 0.1112, S3WtWater_b = 0.115,
-                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965
+                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965,
+                    Observations = "cracked"
                 },
                 new TestResults
                 {
@@ -289,7 +297,8 @@ namespace MudTestApp.Data
                     S2_25Mod = 200, S2_50Mod = 300, S2_100Mod = 400, S2_elongation = 268, S2_tensile = 1965,
                     S3Thickness = 2.32, S3Hardness_a = 89,
                      S3Hardness_b = 92, S3WtAir_a = 0.715, S3WtAir_b = 0.790, S3WtWater_a = 0.1112, S3WtWater_b = 0.115,
-                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965
+                    S3_25Mod = 200, S3_50Mod = 300, S3_100Mod = 400, S3_elongation = 268, S3_tensile = 1965,
+                    Observations = "soft and spongy"
                 }
                 //new TestData
                 //{

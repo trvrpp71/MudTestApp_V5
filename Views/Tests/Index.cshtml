@@ -20,6 +20,10 @@
                 @Html.DisplayNameFor(Model => Model.CustomerVm.CompanyName)
             </th>
             <th>
+                @Html.DisplayNameFor(Model => Model.TestVm.ContactName)
+            </th>
+
+            <th>
                 @Html.DisplayNameFor(model => model.TestVm.LabTechAssigned)
             </th>
             <th>
@@ -42,6 +46,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestVm.ContactName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TestVm.LabTechAssigned)

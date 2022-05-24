@@ -13,7 +13,6 @@ namespace MudTestApp.Models
         [Required]
         [StringLength(100, MinimumLength = 3)]
         public string CompanyName { get; set; } 
-        public string? ContactName { get; set; }
 
         public ICollection<Test> Tests { get; set; }
 

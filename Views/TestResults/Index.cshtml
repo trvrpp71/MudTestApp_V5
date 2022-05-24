@@ -101,10 +101,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.S1_elongation)
-@*            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Test.Customer)
-            </td>*@
+
             <td>
                 @Html.DisplayFor(modelItem => item.Compound.CompoundName)
             </td>
@@ -113,6 +110,9 @@
                 <a asp-action="Details" asp-route-id="@item.TestResultsID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a>
             </td>
+        </tr>
+        <tr>
+            @Html.DisplayFor(modelItem => item.Observations)
         </tr>
 }
     </tbody>

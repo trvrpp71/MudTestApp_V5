@@ -45,7 +45,7 @@ namespace MudTestApp.Controllers
 
             var viewModel = new TestDetailViewModel();
 
-            viewModel.Test = await _context.Tests
+            viewModel.TestDVm = await _context.Tests
                 .Include(i => i.Customer)
                 .Include(i => i.Results)
                     .ThenInclude(i => i.Compound)
