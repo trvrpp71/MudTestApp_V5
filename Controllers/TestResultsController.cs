@@ -70,8 +70,6 @@ namespace MudTestApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Tests", new { id = testResults.TestID });
             }
-            //ViewData["CompoundID"] = new SelectList(_context.Compounds, "CompoundID", "CompoundName", testResults.CompoundID);
-            //ViewData["TestID"] = new SelectList(_context.Tests, "TestID", "Customer", testResults.TestID);
            
             return View(testResults);
         }

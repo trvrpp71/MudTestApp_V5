@@ -68,6 +68,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a> |
+                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a> 
                 <a asp-action="Delete" asp-route-id="@item.TestVm.TestID">Delete</a>
             </td>
         </tr>

@@ -25,6 +25,8 @@ namespace MudTestApp.Data
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Compound>().ToTable("Compound");
             modelBuilder.Entity<TestResults>().ToTable("TestResults");
+                
+
         }
     }
 }
