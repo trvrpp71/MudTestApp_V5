@@ -1,0 +1,162 @@
+﻿@model MudTestApp.Models.TestViewModels.ReportsViewModel
+
+@{
+    ViewData["Title"] = "Report";
+}
+   
+    
+<div>
+    <h4>Details for Test Number: @Model.TestDVm.TestID</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.Customer.CompanyName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.Customer.CompanyName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.ContactName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.ContactName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.LabTechAssigned)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.LabTechAssigned)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.MudType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.MudType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.MudSystemName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.MudSystemName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.ReceivedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.ReceivedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.ExposureTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.ExposureTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.DateStarted)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.DateStarted)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.DateEnded)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.DateEnded)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestDVm.TestComments)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestDVm.TestComments)
+        </dd>
+     </dl>
+
+     <div>
+    <a asp-controller="Tests" asp-action="Index">Back to List</a>
+</div>
+
+     <h2>Test Results Summary</h2>
+ 
+    <div>
+        <table class="table">
+
+                <th>Compound</th>
+                <th>Test Temp</th>
+                <th>Change in Hardness</th>
+                <th>Volume Change %</th>
+                <th>25 % Modulus</th>
+                <th>% Change</th>
+                <th>Tensile</th>
+                <th>% Change</th>
+                <th>Elongation</th>
+                <th>% Change</th>
+
+                @foreach (var item in Model.TestDVm.Results)
+                {
+                var C_mod = item.Compound.C_25Mod;
+                var C_ten = item.Compound.C_Tensile;
+                var C_elg = item.Compound.C_Elongation;
+
+                    var AvgHb = ((item.S1Hardness_b + item.S2Hardness_b + item.S3Hardness_b) / 3);
+                    var AvgHa = ((item.S1Hardness_a + item.S2Hardness_a + item.S3Hardness_a) / 3);
+                    var AvgHard = AvgHa - AvgHb;
+
+                    var AvgWtAir_b = ((item.S1WtAir_b + item.S2WtAir_b + item.S3WtAir_b) / 3);
+                    var AvgWtAir_a = ((item.S1WtAir_a + item.S2WtAir_a + item.S3WtAir_a) / 3);
+
+                    var AvgWtWater_b = ((item.S1WtWater_b + item.S2WtWater_b + item.S3WtWater_b) / 3);
+                    var AvgWtWater_a = ((item.S1WtWater_a + item.S2WtWater_a + item.S3WtWater_a) / 3);
+
+                    var VolChange = ((AvgWtAir_a - AvgWtWater_a) - (AvgWtAir_b - AvgWtWater_b)) / (AvgWtAir_b - AvgWtWater_b) * 100;
+
+                    var Avg25Mod = ((item.S1_25Mod + item.S2_25Mod + item.S3_25Mod) / 3);
+                    var Avg50Mod = ((item.S1_50Mod + item.S2_50Mod + item.S3_50Mod) / 3);
+                    var Avg100Mod = ((item.S1_100Mod + item.S2_100Mod + item.S3_100Mod) / 3);
+    
+                    var AvgTensile = ((item.S1_tensile + item.S2_tensile + item.S3_tensile) / 3);
+                    var AvgElongation = ((item.S1_elongation + item.S2_elongation + item.S3_elongation) / 3);
+
+                    var ModChange = (Avg25Mod / C_mod);
+                    var TensileChange = (AvgTensile / C_ten);
+                    var ElongChange = (AvgElongation / C_elg);
+
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
+                        <td>@AvgHard</td>
+                        <td>@VolChange.ToString("0.00")</td>
+                        <td>@Avg25Mod</td>
+                        <td>@ModChange.ToString("0.00")</td>
+                        <td>@AvgTensile</td>
+                        <td>@TensileChange.ToString("0.00")</td>
+                        <td>@AvgElongation</td>
+                        <td>@ElongChange.ToString("0.00")</td>
+                    </tr>
+
+                    <tr>
+                        <td>compound modulus @C_mod</td>
+                        <td>compund tensile @C_ten</td>
+                        <td>compound elongation @C_elg</td>
+                    </tr>
+
+                
+                }
+        </table>
+
+    </div>
+    
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+</div>
+
