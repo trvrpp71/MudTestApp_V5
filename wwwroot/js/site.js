@@ -2,6 +2,7 @@
     $('#indexTable').DataTable({
         "scrollY": "450px",
         "scrollCollapse": true,
-        "paging": true
+        "paging": true,
+        "order": [[0,'desc']]
     })
 });

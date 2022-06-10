@@ -116,28 +116,23 @@
                     var AvgTensile = ((item.S1_tensile + item.S2_tensile + item.S3_tensile) / 3);
                     var AvgElongation = ((item.S1_elongation + item.S2_elongation + item.S3_elongation) / 3);
 
-                    var ModChange = (Avg25Mod / C_mod);
-                    var TensileChange = (AvgTensile / C_ten);
-                    var ElongChange = (AvgElongation / C_elg);
+                    var ModChange = (1-(Avg25Mod / C_mod))*100;
+                    var TensileChange = (1-(AvgTensile / C_ten))*100;
+                    var ElongChange = (1-(AvgElongation / C_elg))*100;
 
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
-                        <td>@AvgHard</td>
-                        <td>@VolChange.ToString("0.00")</td>
-                        <td>@Avg25Mod</td>
+                        <td>@AvgHard.ToString("0.0")</td>
+                        <td>@VolChange.ToString("0.0")</td>
+                        <td>@Avg25Mod.ToString("0")</td>
                         <td>@ModChange.ToString("0.00")</td>
-                        <td>@AvgTensile</td>
+                        <td>@AvgTensile.ToString("0")</td>
                         <td>@TensileChange.ToString("0.00")</td>
-                        <td>@AvgElongation</td>
+                        <td>@AvgElongation.ToString("0.00")</td>
                         <td>@ElongChange.ToString("0.00")</td>
                     </tr>
 
-                    <tr>
-                        <td>compound modulus @C_mod</td>
-                        <td>compund tensile @C_ten</td>
-                        <td>compound elongation @C_elg</td>
-                    </tr>
 
                 
                 }
