@@ -69,19 +69,20 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TestDVm.TestComments)
         </dd>
-     </dl>
+    </dl>
 
      <div>
-    <a asp-action="Edit" asp-route-id="@Model.TestDVm.TestID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <a asp-action="Edit" asp-route-id="@Model.TestDVm.TestID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 
      <h2>Test Results</h2>
-    <a class="btn btn-outline-success" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.TestDVm.TestID">Add New Test Result</a>
+    
+     <a class="btn btn-outline-success" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.TestDVm.TestID"> Add New Test Result </a>
  
     <div>
-        <table class="table">
-
+        <table class="table" id="detailTable">
+            <thead>
                 <th>Compound</th>
                 <th>Test Temp</th>
                 <th></th>
@@ -98,10 +99,10 @@
                 <th>Elong</th>
                 <th>Tensile</th>
                 <th>Observations</th>
-                <th</th>
+                <th></th>
+            </thead>
 
-
-
+            <tbody>
                 @foreach (var item in Model.TestDVm.Results)
                 {
                     <tr>
@@ -110,8 +111,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>S1</td>
                         <td></td>
+                        <td>S1</td>
                         <td>@Html.DisplayFor(modelItem => item.S1Thickness)</td>
                         <td>@Html.DisplayFor(modelItem => item.S1Hardness_a)</td>
                         <td>@Html.DisplayFor(modelItem => item.S1Hardness_b)</td>
@@ -128,8 +129,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>S2</td>
                         <td></td>
+                        <td>S2</td>
                         <td>@Html.DisplayFor(modelItem => item.S2Thickness)</td>
                         <td>@Html.DisplayFor(modelItem => item.S2Hardness_a)</td>
                         <td>@Html.DisplayFor(modelItem => item.S2Hardness_b)</td>
@@ -145,8 +146,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>S3</td>
                         <td></td>
+                        <td>S3</td>
                         <td>@Html.DisplayFor(modelItem => item.S3Thickness)</td>
                         <td>@Html.DisplayFor(modelItem => item.S3Hardness_a)</td>
                         <td>@Html.DisplayFor(modelItem => item.S3Hardness_b)</td>
@@ -160,26 +161,23 @@
                         <td>@Html.DisplayFor(modelItem => item.S3_elongation)</td>
                         <td>@Html.DisplayFor(modelItem => item.S3_tensile)</td>
                         <td>@Html.DisplayFor(modelItem => item.Observations)</td>
-                        <td><a asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> | <a asp-controller="TestResults" asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a> </td>
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="btn btn-outline-primary" asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a></td>
+                        <td><a class="btn btn-outline-danger" asp-controller="TestResults" asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a></td>
                     </tr>
 
-                }
-        </table>
-
+                }        
+            </tbody>
+         </table>
     </div>
     
-
-
-
-    </table>
-
-
-
-
-
-
-
-
-
 </div>
 

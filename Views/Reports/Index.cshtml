@@ -78,8 +78,8 @@
      <h2>Test Results Summary</h2>
  
     <div>
-        <table class="table">
-
+        <table class="table" id="summaryTable">
+            <thead>
                 <th>Compound</th>
                 <th>Test Temp</th>
                 <th>Change in Hardness</th>
@@ -90,7 +90,9 @@
                 <th>% Change</th>
                 <th>Elongation</th>
                 <th>% Change</th>
+            </thead>
 
+            <tbody>
                 @foreach (var item in Model.TestDVm.Results)
                 {
                 var C_mod = item.Compound.C_25Mod;
@@ -123,7 +125,7 @@
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
-                        <td>@AvgHard.ToString("0.0")</td>
+                        <td id="hard">@AvgHard.ToString("0.0")</td>
                         <td>@VolChange.ToString("0.0")</td>
                         <td>@Avg25Mod.ToString("0")</td>
                         <td>@ModChange.ToString("0.00")</td>
@@ -136,22 +138,17 @@
 
                 
                 }
+            </tbody>
+
         </table>
 
     </div>
     
 
-
-
-    </table>
-
-
-
-
-
-
-
-
-
 </div>
+
+
+
+
+
 
