@@ -2,18 +2,18 @@
 
 @model IEnumerable<MudTestApp.Models.TestViewModels.TestIndexViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mud Test Index";
 }
 
-<h1>Index</h1>
+<h1>Mud Testing Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New Test</a>
 </p>
 
 <div>
     <table id="indexTable" class="table table-bordered table-striped table-hover table-sm" style="width:100%">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(Model => Model.TestVm.TestID)
@@ -66,9 +66,9 @@
             </td>
             
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a> |
-                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a> 
+                <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a><br>
+                <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a><br>
+                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a><br>
                 <a asp-action="Delete" asp-route-id="@item.TestVm.TestID">Delete</a>
             </td>
         </tr>
