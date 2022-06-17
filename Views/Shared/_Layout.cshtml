@@ -22,6 +22,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -37,11 +38,42 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
                         </li>
 
+                        <!-- login buttons -->
+                        @using Microsoft.AspNetCore.Identity
+                        @inject SignInManager<User> signInManager
+
+
+                        @if (signInManager.IsSignedIn(User))
+                        { //signed-in user
+                            <li class="nav-item">
+                                <form method="post" asp-action="LogOut" asp-controller="Account" asp-area="">
+                                    <input type="submit" value = "Log Out" class = "btn btn-outline-light"/>
+                                    <span class="text-light">@User.Identity.Name</span>
+                                </form>
+                            </li>
+
+
+                        } 
+                        else
+                        {
+                            var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account" asp-area="" class="btn btn-outline-light">Log in</a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Test" asp-area="Admin">
+                                <span class="fas fa-cog"></span>&nbsp;Admin</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
