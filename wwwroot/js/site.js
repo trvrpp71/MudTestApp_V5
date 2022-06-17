@@ -5,21 +5,25 @@
         "scrollX": true,
         "scrollCollapse": true,
         "paging": true,
-        "order": [[0,'desc']]
-    }),
+        "order": [[0, 'desc']]
+    });
 
-    $('#summaryTable').DataTable({
-        "paging": false,
-        "scrollY": 400,
-        dom: 'Bftr',
-        buttons: ['excel']
-    }),
+        $('#summaryTable').DataTable({
+            "paging": false,
+            "scrollY": 400,
+            dom: 'Bftr',
+            buttons: ['excel']
+        });
 
-    $('#detailTable').DataTable({
-        dom: 'Bftr',
-        buttons: ['excel'],
-        "paging":false
-    })
+        $('#detailTable').DataTable({
+            dom: 'Bftr',
+            buttons: ['excel'],
+            "paging": false,
+            columnDefs: [{
+                target: 0,
+                visible: false,
+            }]
+        });
 
 
 });

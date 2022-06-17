@@ -86,6 +86,7 @@
         <table class="table table-sm" style="width:100%" id="detailTable">
 
             <thead>
+                <th>Test #</th>
                 <th>Seq#</th>
                 <th>Compound</th>
                 <th>Test Temp</th>
@@ -112,6 +113,7 @@
                 {
                     
                     <tr>
+                        <td>@Html.DisplayFor(model => item.TestID)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestResultsID)</td>
                         <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
@@ -132,6 +134,7 @@
                         <td></td>
                     </tr>
                     <tr>
+                        <td>@Html.DisplayFor(model => item.TestID)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestResultsID)</td>
                         <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
@@ -152,6 +155,7 @@
                         <td></td>
                     </tr>
                     <tr class="table-info">
+                        <td>@Html.DisplayFor(model => item.TestID)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestResultsID)</td>
                         <td>@Html.DisplayFor(modelItem => item.Compound.CompoundName)</td>
                         <td>@Html.DisplayFor(modelItem => item.TestTemp)</td>
