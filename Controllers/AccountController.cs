@@ -46,6 +46,7 @@ namespace MudTestApp.Controllers
                     }
                 }
             }
+            var asdf = ModelState.Values.Where(v => v.Errors.Count > 0)
             ModelState.AddModelError("", "Invalid username/password.");
             return View(model);
         }
