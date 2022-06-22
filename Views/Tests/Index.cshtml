@@ -1,15 +1,22 @@
 ﻿@*@model IEnumerable<MudTestApp.Models.Test>*@
 
 @model IEnumerable<MudTestApp.Models.TestViewModels.TestIndexViewModel>
+
+@inject SignInManager<IdentityUser> signInManager;
+
 @{
     ViewData["Title"] = "Mud Test Index";
 }
 
 <h1>Mud Testing Index</h1>
 
+@if (signInManager.IsSignedIn(User))
+{
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New Test</a>
 </p>
+}
+
 
 <div>
     <table id="indexTable" class="table table-bordered table-striped table-hover table-sm" style="width:100%">
@@ -66,10 +73,14 @@
             </td>
             
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a><br>
-                <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a><br>
-                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a><br>
-                <a asp-action="Delete" asp-route-id="@item.TestVm.TestID">Delete</a>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a><br>
+                    <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a><br>
+                    <a asp-action="Delete" asp-route-id="@item.TestVm.TestID">Delete</a><br>
+                }
+                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a>
+
             </td>
         </tr>
 }

@@ -5,6 +5,7 @@ using MudTestApp.Models;
 using MudTestApp.Models.TestViewModels;
 using System.Linq;
 using MudTestApp.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MudTestApp.Controllers
 {
@@ -30,12 +31,14 @@ namespace MudTestApp.Controllers
 
         //GET: / <controller>
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
     
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -62,12 +65,14 @@ namespace MudTestApp.Controllers
 
        
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)

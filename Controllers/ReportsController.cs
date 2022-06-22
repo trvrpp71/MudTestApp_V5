@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MudTestApp.Data;
 using MudTestApp.Models;
 using MudTestApp.Models.TestViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MudTestApp.Controllers
 {
@@ -18,6 +19,7 @@ namespace MudTestApp.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int? id)  //id = test ID
         {
             if (id == null)
