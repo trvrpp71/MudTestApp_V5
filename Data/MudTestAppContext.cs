@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace MudTestApp.Data
 {
     //public class MudTestAppContext : DbContext
-    public class MudTestAppContext : IdentityDbContext<User>
+    public class MudTestAppContext : IdentityDbContext
     {
         public MudTestAppContext(DbContextOptions<MudTestAppContext> options): base(options)
             { }

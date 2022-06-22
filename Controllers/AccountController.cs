@@ -3,52 +3,91 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using MudTestApp.Models;
 using MudTestApp.Models.TestViewModels;
+using System.Linq;
+using MudTestApp.Models.ViewModels;
 
 namespace MudTestApp.Controllers
 {
     public class AccountController : Controller
     {
-        private UserManager<User> userManager;
-        private SignInManager<User> signInManager;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager; 
 
-        public AccountController(UserManager<User> userMngr,SignInManager<User> signInMngr)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-            userManager = userMngr;
-            signInManager = signInMngr;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
-
-        [HttpGet]
-        public IActionResult LogIn(string returnURL = "")
-        {
-            var model = new LoginViewModel { ReturnUrl = returnURL };
-            return View(model);
-        }
-
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginViewModel model)
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync(); 
+            return RedirectToAction("Index", "tests");
+        }
+
+
+        public SignInManager<IdentityUser> SignInManager { get; }
+
+        //GET: / <controller>
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+    
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(
-                    model.Username, model.Password, isPersistent: model.RememberMe,
-                    lockoutOnFailure: false);
+                var user = new IdentityUser { UserName = model.UserName };
+                var result = await userManager.CreateAsync(user, model.Password); 
 
                 if (result.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) &&
-                        Url.IsLocalUrl(model.ReturnUrl))
-                    {
-                        return Redirect(model.ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    await SignInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Tests");
+                }
+
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-            var asdf = ModelState.Values.Where(v => v.Errors.Count > 0)
-            ModelState.AddModelError("", "Invalid username/password.");
+
             return View(model);
         }
+
+
+
+       
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Tests");
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+
+            }
+
+            return View(model);
+        }
+
+
     }
+ 
 }

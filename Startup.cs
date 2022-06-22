@@ -31,7 +31,7 @@ namespace MudTestApp
 
             services.AddControllersWithViews();
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<MudTestAppContext>()
                 .AddDefaultTokenProviders();
         }
