@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿const { unique } = require("jquery");
+
+$(document).ready(function () {
 
     $('#indexTable').DataTable({
         "scrollY": "500px",
@@ -27,4 +29,7 @@
 
 
 });
+
+
+
 

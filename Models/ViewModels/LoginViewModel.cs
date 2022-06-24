@@ -13,7 +13,7 @@ namespace MudTestApp.Models.TestViewModels
         [StringLength(255)]
         public string Password { get; set; }
 
-        //public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
 
         [Display(Name ="Remember Me")]
         public bool RememberMe { get; set; }

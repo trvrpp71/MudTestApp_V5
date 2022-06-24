@@ -19,6 +19,7 @@ namespace MudTestApp.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
@@ -27,9 +28,9 @@ namespace MudTestApp.Controllers
         }
 
 
-        public SignInManager<IdentityUser> SignInManager { get; }
+        public SignInManager<IdentityUser> SignInManager { get; set; }
 
-        //GET: / <controller>
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register()
@@ -78,7 +79,7 @@ namespace MudTestApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +88,15 @@ namespace MudTestApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Tests");
+                    if (!string.IsNullOrEmpty(returnUrl)) 
+                    {
+                        return LocalRedirect(returnUrl); //check for valid returnUrl
+                    }
+                    else
+                    {                    
+                        return RedirectToAction("Index", "Tests");
+                    }
+
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");
@@ -96,6 +105,54 @@ namespace MudTestApp.Controllers
 
             return View(model);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if(user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found.";
+                return View("NotFound");
+            }
+
+            var model = new ChangePasswordViewModel
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+                var user = await userManager.FindByIdAsync(model.Id);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+                
+                var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                    
+                if (!result.Succeeded)
+                {
+                     foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+                //await signInManager.RefreshSignInAsync(user);
+                return View("PasswordChangeConfirmation");
+
+        }
+
 
         [HttpGet]
         [AllowAnonymous]
