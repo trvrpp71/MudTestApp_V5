@@ -49,9 +49,9 @@
 
         <tbody>
 
-            @*show all tests if user is logged in and in R&D role*@
+            @*show all tests if user is logged in*@
 
-            @if (signInManager.IsSignedIn(User))
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("R&D") || User.IsInRole("Admin"))
             {
                 @foreach (var item in Model)
                 {
@@ -86,10 +86,11 @@
                         </td>
                     </tr>                      
                 }
-            } else
+            } else @*user is not logged in or not part of R&D*@
             {
                 @foreach (var item in Model)
                 {
+                    @*Show only 'non-R&D' tests*@
                     if(item.CustomerVm.CompanyName != "R&D")
                     {
                         <tr>

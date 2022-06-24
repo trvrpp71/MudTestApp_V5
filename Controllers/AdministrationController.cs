@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MudTestApp.Models.ViewModels;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MudTestApp.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -19,7 +21,17 @@ namespace MudTestApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateRole() { return View(); }
+        public IActionResult ListUsers() 
+        {
+            var users = userManager.Users;
+            return View(users); 
+        }
+
+        [HttpGet]
+        public IActionResult CreateRole() 
+        { 
+            return View(); 
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)

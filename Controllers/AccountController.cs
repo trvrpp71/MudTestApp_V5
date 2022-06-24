@@ -48,6 +48,11 @@ namespace MudTestApp.Controllers
 
                 if (result.Succeeded)
                 {
+                    if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Administration");
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Tests");
                 }
@@ -92,6 +97,12 @@ namespace MudTestApp.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View("AccessDenied");
+        }
 
     }
  
