@@ -108,6 +108,7 @@ namespace MudTestApp.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangePassword(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -129,6 +130,7 @@ namespace MudTestApp.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
                 var user = await userManager.FindByIdAsync(model.Id);

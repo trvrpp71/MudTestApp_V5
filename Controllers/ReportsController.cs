@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MudTestApp.Controllers
 {
+    [AllowAnonymous]
     public class ReportsController : Controller
     {
         private readonly MudTestAppContext _context;

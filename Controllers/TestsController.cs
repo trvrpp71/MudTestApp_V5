@@ -12,6 +12,7 @@ using MudTestApp.Models.TestViewModels;
 
 namespace MudTestApp.Controllers
 {
+    [Authorize(Roles = "Admin, Lab, AppEng")]
     public class TestsController : Controller
     {
         private readonly MudTestAppContext _context;
