@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using MudTestApp.Models.TestViewModels;
 
 namespace MudTestApp.Controllers
 {
+    [Authorize(Roles = "Admin, Lab, AppEng")]
     public class TestsController : Controller
     {
         private readonly MudTestAppContext _context;
@@ -21,6 +23,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests
+        [AllowAnonymous]
         public async Task<IActionResult> Index( )
         {
 
@@ -34,6 +37,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests/Details/5
+
         public async Task<IActionResult> Details(int? id, int? CustomerID, int? CompoundId, int? TestResultsID)  //id = test ID
         {
             if (id == null)
@@ -60,6 +64,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests/Create
+    
         public IActionResult Create()
         {
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CompanyName");
@@ -71,6 +76,7 @@ namespace MudTestApp.Controllers
         // POST: Tests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -103,6 +109,7 @@ namespace MudTestApp.Controllers
         }
 
         // GET: Tests/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -124,10 +131,11 @@ namespace MudTestApp.Controllers
         // POST: Tests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TestID,CustomerID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
-            //[Bind("Customer,CustomerContact,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")]
+
 
         {
             if (id != test.TestID)

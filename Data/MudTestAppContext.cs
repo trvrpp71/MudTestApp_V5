@@ -1,11 +1,13 @@
 ﻿#nullable disable
-
+using Microsoft.AspNetCore.Identity;
 using MudTestApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MudTestApp.Data
 {
-    public class MudTestAppContext : DbContext
+    //public class MudTestAppContext : DbContext
+    public class MudTestAppContext : IdentityDbContext
     {
         public MudTestAppContext(DbContextOptions<MudTestAppContext> options): base(options)
             { }
@@ -21,6 +23,8 @@ namespace MudTestApp.Data
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Test>().ToTable("Test");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Compound>().ToTable("Compound");

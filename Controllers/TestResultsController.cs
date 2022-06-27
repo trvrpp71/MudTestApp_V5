@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using MudTestApp.Models;
 
 namespace MudTestApp.Controllers
 {
+    [Authorize(Roles = "Admin, Lab")]
     public class TestResultsController : Controller
     {
         private const string BindVariables = "TestResultsID,TestID,CompoundID,TestTemp,S1Thickness,S1Hardness_a,S1Hardness_b,S1WtAir_a,S1WtAir_b,S1WtWater_a,S1WtWater_b,S1_25Mod,S1_50Mod,S1_100Mod,S1_tensile,S1_elongation, ,S2Thickness,S2Hardness_a,S2Hardness_b,S2WtAir_a,S2WtAir_b,S2WtWater_a,S2WtWater_b,S2_25Mod,S2_50Mod,S2_100Mod,S2_tensile,S2_elongation,,S3Thickness,S3Hardness_a,S3Hardness_b,S3WtAir_a,S3WtAir_b,S3WtWater_a,S3WtWater_b,S3_25Mod,S3_50Mod,S3_100Mod,S3_tensile,S3_elongation";

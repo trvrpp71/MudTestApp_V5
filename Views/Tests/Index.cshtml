@@ -1,79 +1,132 @@
-﻿@*@model IEnumerable<MudTestApp.Models.Test>*@
-
+﻿
 @model IEnumerable<MudTestApp.Models.TestViewModels.TestIndexViewModel>
+
+@inject SignInManager<IdentityUser> signInManager;
+
 @{
     ViewData["Title"] = "Mud Test Index";
 }
 
 <h1>Mud Testing Index</h1>
 
+@if (signInManager.IsSignedIn(User))
+{
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New Test</a>
 </p>
+}
+
 
 <div>
     <table id="indexTable" class="table table-bordered table-striped table-hover table-sm" style="width:100%">
-    <thead class="thead-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(Model => Model.TestVm.TestID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(Model => Model.CustomerVm.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(Model => Model.TestVm.ContactName)
-            </th>
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.TestVm.TestID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.CustomerVm.CompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.TestVm.ContactName)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.TestVm.LabTechAssigned)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TestVm.MudType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TestVm.MudSystemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TestVm.ReceivedDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.TestID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.ContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.LabTechAssigned)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.MudType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.MudSystemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestVm.ReceivedDate)
-            </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestVm.LabTechAssigned)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestVm.MudType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestVm.MudSystemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestVm.ReceivedDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @*show all tests if user is logged in*@
+
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Lab") || User.IsInRole("Admin"))
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.TestID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.LabTechAssigned)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.MudType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.MudSystemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.ReceivedDate)
+                        </td>
             
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit</a><br>
-                <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Details</a><br>
-                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary</a><br>
-                <a asp-action="Delete" asp-route-id="@item.TestVm.TestID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.TestVm.TestID">Edit Test Info</a><br>
+                            <a asp-action="Details" asp-route-id="@item.TestVm.TestID">Detail View</a><br>
+                            <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary View</a>
+                        </td>
+                    </tr>                      
+                }
+            } else @*user is not logged in or not part of R&D*@
+            {
+                @foreach (var item in Model)
+                {
+                    @*Show only 'non-R&D' tests*@
+                    if(item.CustomerVm.CompanyName != "R&D")
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.TestID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.ContactName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.LabTechAssigned)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.MudType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.MudSystemName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.ReceivedDate)
+                            </td>
+            
+                            <td>
+                                <a asp-controller="Reports" asp-action="Index" asp-route-id="@item.TestVm.TestID">Summary view</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
 </div>
 
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
