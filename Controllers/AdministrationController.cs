@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MudTestApp.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;

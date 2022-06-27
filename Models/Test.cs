@@ -19,6 +19,9 @@ namespace MudTestApp.Models
 
         public int CustomerID { get; set; }  //foreign key
 
+        [Display(Name ="RMA")]
+        public int? Epicor { get; set; }
+
         [Display(Name = "Contact")]
         public string? ContactName { get; set; }    
 
