@@ -22,37 +22,26 @@ $(document).ready(function () {
 
     });
 
-        $('#summaryTable').DataTable({
-            "paging": false,
-            "scrollY": 400,
-            dom: 'Bftr',
-            buttons: ['excel']
-        });
+    $('#summaryTable').DataTable({
+        "paging": false,
+        "scrollY": 400,
+        dom: 'Bftr',
+        buttons: ['excel']
+    });
 
-        $('#detailTable').DataTable({
-            dom: 'Bftr',
-            buttons: ['excel'],
-            "paging": false,
-            columnDefs: [{
-                target: 0,
-                visible: false,
-            }]
-        });
+    $('#detailTable').DataTable({
+        dom: 'Bftr',
+        buttons: ['excel'],
+        "paging": false,
+        columnDefs: [{
+            target: 0,
+            visible: false,
+        }]
+    });
 
 
 });
 
-//function confirmDelete(uniqueId, isDeleteClicked) {
-//    var deleteSpan = 'deleteSpan_' + uniqueId;
-//    var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
 
-//    if (isDeleteClicked) {
-//        $('#' + deleteSpan).hide();
-//        $('#' + confirmDeleteSpan).show();
-//    } else {
-//        $('#' + deleteSpan).show();
-//        $('#' + confirmDeleteSpan).hide();
-//    }
-//}
 
 

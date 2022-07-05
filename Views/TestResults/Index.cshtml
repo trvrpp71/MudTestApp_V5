@@ -9,7 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<hr />
+<table class="table" id="detailTable">
     <thead>
         
             <th>
@@ -60,60 +61,65 @@
             <th></th>
         
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestTemp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1Thickness)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1Hardness_a)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1Hardness_b)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1WtAir_a)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1WtAir_b)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1WtWater_a)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1WtWater_b)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1_25Mod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1_50Mod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1_100Mod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1_tensile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.S1_elongation)
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Compound.CompoundName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TestResultsID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            @Html.DisplayFor(modelItem => item.Observations)
-        </tr>
-}
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestTemp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1Thickness)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1Hardness_a)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1Hardness_b)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1WtAir_a)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1WtAir_b)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1WtWater_a)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1WtWater_b)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1_25Mod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1_50Mod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1_100Mod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1_tensile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.S1_elongation)
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Compound.CompoundName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TestResultsID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                @Html.DisplayFor(modelItem => item.Observations)
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
