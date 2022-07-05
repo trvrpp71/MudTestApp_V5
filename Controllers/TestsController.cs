@@ -12,7 +12,7 @@ using MudTestApp.Models.TestViewModels;
 
 namespace MudTestApp.Controllers
 {
-    [Authorize(Roles = "Admin, Lab, AppEng")]
+
     public class TestsController : Controller
     {
         private readonly MudTestAppContext _context;
@@ -81,7 +81,7 @@ namespace MudTestApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
 
-            [Bind("CustomerID, LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            [Bind("Epicor,CustomerID, LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace MudTestApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestID,CustomerID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestID,Epicor,CustomerID,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
 
 
         {

@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
-
+    @*set font library*@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Roboto:wght@100&display=swap" rel="stylesheet">
 
 
 
 </head>
-<body>
+<body id="bootstrap_overrides">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -47,7 +50,7 @@
                             </li>
                         }
 
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")) 
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
@@ -126,7 +129,7 @@
 
 @if (IsSectionDefined("Scripts"))
     {
-        @RenderSection("Scripts", required: true)
+        RenderSection("Scripts", required: true);
     }
 
 </body>

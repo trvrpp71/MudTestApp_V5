@@ -14,10 +14,12 @@ $(document).ready(function () {
             null,
             null,
             null,
-            { "width": "20px" },
-            { "width": "75px" },
-            
-            null]
+            null,
+            { "width": "10%"},
+            { "width": "15%" },
+            null,
+        ]
+
     });
 
         $('#summaryTable').DataTable({
@@ -40,17 +42,17 @@ $(document).ready(function () {
 
 });
 
-function confirmDelete(uniqueId, isDeleteClicked) {
-    var deleteSpan = 'deleteSpan_' + uniqueId;
-    var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+//function confirmDelete(uniqueId, isDeleteClicked) {
+//    var deleteSpan = 'deleteSpan_' + uniqueId;
+//    var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
 
-    if (isDeleteClicked) {
-        $('#' + deleteSpan).hide();
-        $('#' + confirmDeleteSpan).show();
-    } else {
-        $('#' + deleteSpan).show();
-        $('#' + confirmDeleteSpan).hide();
-    }
-}
+//    if (isDeleteClicked) {
+//        $('#' + deleteSpan).hide();
+//        $('#' + confirmDeleteSpan).show();
+//    } else {
+//        $('#' + deleteSpan).show();
+//        $('#' + confirmDeleteSpan).hide();
+//    }
+//}
 
 

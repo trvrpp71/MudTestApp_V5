@@ -14,10 +14,13 @@ namespace MudTestApp.Models
      */
     public class Test
     {
-        
+        [Display(Name = "Test #")]
         public int TestID { get; set; }
 
         public int CustomerID { get; set; }  //foreign key
+
+        [Display(Name ="RMA")]
+        public int? Epicor { get; set; }
 
         [Display(Name = "Contact")]
         public string? ContactName { get; set; }    

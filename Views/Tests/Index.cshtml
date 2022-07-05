@@ -7,7 +7,7 @@
     ViewData["Title"] = "Mud Test Index";
 }
 
-<h1>Mud Testing Index</h1>
+<h1 class="test">Mud Testing Index</h1>
 
 @if (signInManager.IsSignedIn(User))
 {
@@ -18,11 +18,15 @@
 
 
 <div>
-    <table id="indexTable" class="table table-bordered table-striped table-hover table-sm" style="width:100%">
+    <table id="indexTable" class="table table-bordered table-striped table-hover table-sm " style="width:100%">
         <thead class="thead-dark">
-            <tr>
+            <tr class="thead-font">
+
                 <th>
                     @Html.DisplayNameFor(Model => Model.TestVm.TestID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.TestVm.Epicor)
                 </th>
                 <th>
                     @Html.DisplayNameFor(Model => Model.CustomerVm.CompanyName)
@@ -55,10 +59,16 @@
             {
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr id="td-font">
+
                         <td>
                             @Html.DisplayFor(modelItem => item.TestVm.TestID)
                         </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestVm.Epicor)
+                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
                         </td>
@@ -93,9 +103,15 @@
                     if(item.CustomerVm.CompanyName != "R&D")
                     {
                         <tr>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.TestVm.TestID)
                             </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TestVm.Epicor)
+                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.CustomerVm.CompanyName)
                             </td>
