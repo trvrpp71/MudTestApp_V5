@@ -14,7 +14,7 @@ namespace MudTestApp.Models
      */
     public class Test
     {
-        
+        [Display(Name = "Test #")]
         public int TestID { get; set; }
 
         public int CustomerID { get; set; }  //foreign key
