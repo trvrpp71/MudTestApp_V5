@@ -8,6 +8,7 @@
 <div>
     <h4>Results Summary for Test Number: @Model.TestDVm.TestID</h4>
     <hr />
+    
     <dl class="row">
         <dt class = "col-sm-3">
             @Html.DisplayNameFor(model => model.TestDVm.Customer.CompanyName)
@@ -69,13 +70,11 @@
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.TestComments)
         </dd>
-     </dl>
+        </dl>
 
-     <div>
-    <a asp-controller="Tests" asp-action="Index">Back to List</a>
-</div>
-
-     <h2>Test Results Summary</h2>
+    <hr/>
+     
+    <h2>Test Results Summary</h2>
  
     <div class="table-responsive">
         <table class="table" id="summaryTable">
@@ -134,18 +133,18 @@
                         <td>@AvgElongation.ToString("0.00")</td>
                         <td>@ElongChange.ToString("0.00")</td>
                     </tr>
-
-
-                
                 }
             </tbody>
-
         </table>
-
     </div>
-    
+
+    <div class="mt-3 text-center">
+            <a class="btn btn-primary" asp-controller="Tests" asp-action="Index">Back to List</a>
+    </div>
 
 </div>
+
+
 
 @section Scripts {
     <script src="~/js/site.js"></script>

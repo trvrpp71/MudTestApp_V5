@@ -77,19 +77,14 @@
         </dd>
     </dl>
 
-     <div>
-        <a asp-action="Edit" asp-route-id="@Model.TestDVm.TestID">Edit</a> |
-        <a asp-action="Index">Back to List</a>
+     <div class="m-3">
+        <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.TestDVm.TestID">Edit Test Info </a> |
+        <a class="btn btn-outline-info" asp-action="Index">Cancel</a>
     </div>
 
      <h2>Test Results</h2>
-    
-     <a class="btn btn-outline-success mb-2" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.TestDVm.TestID"> Add New Test Result </a>
  
     <hr />
-
-    <p>(b) = before</p>
-    <p>(a) = after</p>
  
     <div class="table-responsive">
         <table class="table table-sm" style="width:100%" id="detailTable">
@@ -186,14 +181,13 @@
                         <td><a asp-controller="TestResults" asp-action="Edit" asp-route-id="@item.TestResultsID">Edit</a> |
                         <a asp-controller="TestResults" asp-action="Delete" asp-route-id="@item.TestResultsID">Delete</a></td>
                     </tr>
-
-
-
                 }        
             </tbody>
          </table>
     </div>
-    
+    <div class="m-3">
+        <a class="btn btn-outline-success btn-block mt-2" asp-controller="TestResults" asp-action="Create" asp-route-id="@Model.TestDVm.TestID"> Add New Test Result </a>
+    </div>
 </div>
 
 @section Scripts {
