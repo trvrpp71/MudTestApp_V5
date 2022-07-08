@@ -26,6 +26,19 @@
             </div>
             
             <div class="form-group">
+                <label asp-for="Operator" class="control-label"></label>
+                <input asp-for="Operator" class="form-control" />
+                <span asp-validation-for="Operator" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OpField" class="control-label"></label>
+                <input asp-for="OpField" class="form-control" />
+                <span asp-validation-for="OpField" class="text-danger"></span>
+            </div>
+
+            
+            <div class="form-group">
                 <label asp-for="ContactName" class="control-label"></label>
                 <input asp-for="ContactName" class="form-control" />
                 <span asp-validation-for="ContactName" class="text-danger"></span>

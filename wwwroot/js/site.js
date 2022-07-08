@@ -3,28 +3,16 @@
 $(document).ready(function () {
 
     $('#indexTable').DataTable({
-        "scrollY": "500px",
+        "scrollY": "750px",
         "scrollX": true,
         "scrollCollapse": true,
         "paging": true,
-        "order": [[0, 'desc']],
-        "columns": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            { "width": "10%"},
-            { "width": "15%" },
-            null,
-        ]
-
+        "order": [[0, 'desc']]
     });
 
     $('#summaryTable').DataTable({
         "paging": false,
-        "scrollY": 400,
+        "scrollY": 750,
         dom: 'Bftr',
         buttons: ['excel']
     });
