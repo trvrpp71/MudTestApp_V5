@@ -41,6 +41,9 @@ namespace MudTestApp.Models
         [Display(Name ="Mud System")]
         public string? MudSystemName { get; set; }
 
+        [Display(Name = "Aniline Point")]
+        public double? AnilinePoint { get; set; }
+
         [Required (ErrorMessage = "The date the sample is received in the lab is required.")]
         [DataType(DataType.Date), Display(Name ="Sample Rec'd On"), DisplayFormat(DataFormatString ="{0:dd-MMM-yy}")]
         public DateTime ReceivedDate { get; set; }

@@ -3,240 +3,254 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="container">
+    <h1>Editing Test Results</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-12"> @*Test info Inputs*@
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TestResultsID" />
+                <div class="form-group">
+                    <label asp-for="TestID" class="control-label"></label>
+                    <input asp-for="TestID" class="form-control" value=@ViewBag.TestID>
+                    <span asp-validation-for="TestID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompoundID" class="control-label"></label>
+                    <select asp-for="CompoundID" class="form-control" asp-items="ViewBag.CompoundID"></select>
+                    <span asp-validation-for="CompoundID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TestTemp" class="control-label"></label>
+                    <input asp-for="TestTemp" class="form-control" />
+                    <span asp-validation-for="TestTemp" class="text-danger"></span>
+                </div>
 
-<h1>Edit</h1>
+                <div class="row"> @*sample Inputs*@
+                    <div class="col-md-4"> @*Sample 1*@
+                       <div class="form-group">
+                            <label asp-for="S1Thickness" class="control-label"></label>
+                            <input asp-for="S1Thickness" class="form-control" />
+                            <span asp-validation-for="S1Thickness" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1Hardness_b" class="control-label"></label>
+                            <input asp-for="S1Hardness_b" class="form-control" />
+                            <span asp-validation-for="S1Hardness_b" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label asp-for="S1WtAir_b" class="control-label"></label>
+                            <input asp-for="S1WtAir_b" class="form-control" />
+                            <span asp-validation-for="S1WtAir_b" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label asp-for="S1WtWater_b" class="control-label"></label>
+                            <input asp-for="S1WtWater_b" class="form-control" />
+                            <span asp-validation-for="S1WtWater_b" class="text-danger"></span>
+                        </div>
 
-<h4>TestResults</h4>
-<hr />
-<div class="row">
-    <div class="col-md-12"> @*Test info Inputs*@
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="TestResultsID" />
-            <div class="form-group">
-                <label asp-for="TestID" class="control-label"></label>
-                <input asp-for="TestID" class="form-control" value=@ViewBag.TestID>
-                <span asp-validation-for="TestID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CompoundID" class="control-label"></label>
-                <select asp-for="CompoundID" class="form-control" asp-items="ViewBag.CompoundID"></select>
-                <span asp-validation-for="CompoundID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TestTemp" class="control-label"></label>
-                <input asp-for="TestTemp" class="form-control" />
-                <span asp-validation-for="TestTemp" class="text-danger"></span>
-            </div>
+                        <div class="form-group">
+                            <label asp-for="S1Hardness_a" class="control-label"></label>
+                            <input asp-for="S1Hardness_a" class="form-control" />
+                            <span asp-validation-for="S1Hardness_a" class="text-danger"></span>
+                        </div>
 
-            <div class="row"> @*sample Inputs*@
-                <div class="col-md-4"> @*Sample 1*@
-                   <div class="form-group">
-                        <label asp-for="S1Thickness" class="control-label"></label>
-                        <input asp-for="S1Thickness" class="form-control" />
-                        <span asp-validation-for="S1Thickness" class="text-danger"></span>
+                        <div class="form-group">
+                            <label asp-for="S1WtAir_a" class="control-label"></label>
+                            <input asp-for="S1WtAir_a" class="form-control" />
+                            <span asp-validation-for="S1WtAir_a" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S1WtWater_a" class="control-label"></label>
+                            <input asp-for="S1WtWater_a" class="form-control" />
+                            <span asp-validation-for="S1WtWater_a" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1_25Mod" class="control-label"></label>
+                            <input asp-for="S1_25Mod" class="form-control" />
+                            <span asp-validation-for="S1_25Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1_50Mod" class="control-label"></label>
+                            <input asp-for="S1_50Mod" class="form-control" />
+                            <span asp-validation-for="S1_50Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1_100Mod" class="control-label"></label>
+                            <input asp-for="S1_100Mod" class="form-control" />
+                            <span asp-validation-for="S1_100Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1_tensile" class="control-label"></label>
+                            <input asp-for="S1_tensile" class="form-control" />
+                            <span asp-validation-for="S1_tensile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S1_elongation" class="control-label"></label>
+                            <input asp-for="S1_elongation" class="form-control" />
+                            <span asp-validation-for="S1_elongation" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="S1Hardness_b" class="control-label"></label>
-                        <input asp-for="S1Hardness_b" class="form-control" />
-                        <span asp-validation-for="S1Hardness_b" class="text-danger"></span>
+
+                    <div class="col-md-4">  @*Sample 2*@
+                       <div class="form-group">
+                            <label asp-for="S2Thickness" class="control-label"></label>
+                            <input asp-for="S2Thickness" class="form-control" />
+                            <span asp-validation-for="S2Thickness" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2Hardness_b" class="control-label"></label>
+                            <input asp-for="S2Hardness_b" class="form-control" />
+                            <span asp-validation-for="S2Hardness_b" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2WtAir_b" class="control-label"></label>
+                            <input asp-for="S2WtAir_b" class="form-control" />
+                            <span asp-validation-for="S2WtAir_b" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label asp-for="S2WtWater_b" class="control-label"></label>
+                            <input asp-for="S2WtWater_b" class="form-control" />
+                            <span asp-validation-for="S2WtWater_b" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S2Hardness_a" class="control-label"></label>
+                            <input asp-for="S2Hardness_a" class="form-control" />
+                            <span asp-validation-for="S2Hardness_a" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S2WtAir_a" class="control-label"></label>
+                            <input asp-for="S2WtAir_a" class="form-control" />
+                            <span asp-validation-for="S2WtAir_a" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S2WtWater_a" class="control-label"></label>
+                            <input asp-for="S2WtWater_a" class="form-control" />
+                            <span asp-validation-for="S2WtWater_a" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2_25Mod" class="control-label"></label>
+                            <input asp-for="S2_25Mod" class="form-control" />
+                            <span asp-validation-for="S2_25Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2_50Mod" class="control-label"></label>
+                            <input asp-for="S2_50Mod" class="form-control" />
+                            <span asp-validation-for="S2_50Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2_100Mod" class="control-label"></label>
+                            <input asp-for="S2_100Mod" class="form-control" />
+                            <span asp-validation-for="S2_100Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2_tensile" class="control-label"></label>
+                            <input asp-for="S2_tensile" class="form-control" />
+                            <span asp-validation-for="S2_tensile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S2_elongation" class="control-label"></label>
+                            <input asp-for="S2_elongation" class="form-control" />
+                            <span asp-validation-for="S2_elongation" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="S1Hardness_a" class="control-label"></label>
-                        <input asp-for="S1Hardness_a" class="form-control" />
-                        <span asp-validation-for="S1Hardness_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1WtAir_b" class="control-label"></label>
-                        <input asp-for="S1WtAir_b" class="form-control" />
-                        <span asp-validation-for="S1WtAir_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1WtAir_a" class="control-label"></label>
-                        <input asp-for="S1WtAir_a" class="form-control" />
-                        <span asp-validation-for="S1WtAir_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1WtWater_b" class="control-label"></label>
-                        <input asp-for="S1WtWater_b" class="form-control" />
-                        <span asp-validation-for="S1WtWater_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1WtWater_a" class="control-label"></label>
-                        <input asp-for="S1WtWater_a" class="form-control" />
-                        <span asp-validation-for="S1WtWater_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1_25Mod" class="control-label"></label>
-                        <input asp-for="S1_25Mod" class="form-control" />
-                        <span asp-validation-for="S1_25Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1_50Mod" class="control-label"></label>
-                        <input asp-for="S1_50Mod" class="form-control" />
-                        <span asp-validation-for="S1_50Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1_100Mod" class="control-label"></label>
-                        <input asp-for="S1_100Mod" class="form-control" />
-                        <span asp-validation-for="S1_100Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1_tensile" class="control-label"></label>
-                        <input asp-for="S1_tensile" class="form-control" />
-                        <span asp-validation-for="S1_tensile" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S1_elongation" class="control-label"></label>
-                        <input asp-for="S1_elongation" class="form-control" />
-                        <span asp-validation-for="S1_elongation" class="text-danger"></span>
+
+
+                    <div class="col-md-4"> @*Sample 3*@
+                       <div class="form-group">
+                            <label asp-for="S3Thickness" class="control-label"></label>
+                            <input asp-for="S3Thickness" class="form-control" />
+                            <span asp-validation-for="S3Thickness" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3Hardness_b" class="control-label"></label>
+                            <input asp-for="S3Hardness_b" class="form-control" />
+                            <span asp-validation-for="S3Hardness_b" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label asp-for="S3WtAir_b" class="control-label"></label>
+                            <input asp-for="S3WtAir_b" class="form-control" />
+                            <span asp-validation-for="S3WtAir_b" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label asp-for="S3WtWater_b" class="control-label"></label>
+                            <input asp-for="S3WtWater_b" class="form-control" />
+                            <span asp-validation-for="S3WtWater_b" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S3Hardness_a" class="control-label"></label>
+                            <input asp-for="S3Hardness_a" class="form-control" />
+                            <span asp-validation-for="S3Hardness_a" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S3WtAir_a" class="control-label"></label>
+                            <input asp-for="S3WtAir_a" class="form-control" />
+                            <span asp-validation-for="S3WtAir_a" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="S3WtWater_a" class="control-label"></label>
+                            <input asp-for="S3WtWater_a" class="form-control" />
+                            <span asp-validation-for="S3WtWater_a" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3_25Mod" class="control-label"></label>
+                            <input asp-for="S3_25Mod" class="form-control" />
+                            <span asp-validation-for="S3_25Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3_50Mod" class="control-label"></label>
+                            <input asp-for="S3_50Mod" class="form-control" />
+                            <span asp-validation-for="S3_50Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3_100Mod" class="control-label"></label>
+                            <input asp-for="S3_100Mod" class="form-control" />
+                            <span asp-validation-for="S3_100Mod" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3_tensile" class="control-label"></label>
+                            <input asp-for="S3_tensile" class="form-control" />
+                            <span asp-validation-for="S3_tensile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="S3_elongation" class="control-label"></label>
+                            <input asp-for="S3_elongation" class="form-control" />
+                            <span asp-validation-for="S3_elongation" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">  @*Sample 2*@
-                   <div class="form-group">
-                        <label asp-for="S2Thickness" class="control-label"></label>
-                        <input asp-for="S2Thickness" class="form-control" />
-                        <span asp-validation-for="S2Thickness" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2Hardness_b" class="control-label"></label>
-                        <input asp-for="S2Hardness_b" class="form-control" />
-                        <span asp-validation-for="S2Hardness_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2Hardness_a" class="control-label"></label>
-                        <input asp-for="S2Hardness_a" class="form-control" />
-                        <span asp-validation-for="S2Hardness_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2WtAir_b" class="control-label"></label>
-                        <input asp-for="S2WtAir_b" class="form-control" />
-                        <span asp-validation-for="S2WtAir_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2WtAir_a" class="control-label"></label>
-                        <input asp-for="S2WtAir_a" class="form-control" />
-                        <span asp-validation-for="S2WtAir_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2WtWater_b" class="control-label"></label>
-                        <input asp-for="S2WtWater_b" class="form-control" />
-                        <span asp-validation-for="S2WtWater_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2WtWater_a" class="control-label"></label>
-                        <input asp-for="S2WtWater_a" class="form-control" />
-                        <span asp-validation-for="S2WtWater_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2_25Mod" class="control-label"></label>
-                        <input asp-for="S2_25Mod" class="form-control" />
-                        <span asp-validation-for="S2_25Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2_50Mod" class="control-label"></label>
-                        <input asp-for="S2_50Mod" class="form-control" />
-                        <span asp-validation-for="S2_50Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2_100Mod" class="control-label"></label>
-                        <input asp-for="S2_100Mod" class="form-control" />
-                        <span asp-validation-for="S2_100Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2_tensile" class="control-label"></label>
-                        <input asp-for="S2_tensile" class="form-control" />
-                        <span asp-validation-for="S2_tensile" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S2_elongation" class="control-label"></label>
-                        <input asp-for="S2_elongation" class="form-control" />
-                        <span asp-validation-for="S2_elongation" class="text-danger"></span>
-                    </div>
+                <div class="form-group"> @*Observation Input*@
+                    <label asp-for="Observations" class="control-label"></label>
+                    <input asp-for="Observations" class="form-control" />
+                    <span asp-validation-for="Observations" class="text-danger"></span>
                 </div>
 
-
-                <div class="col-md-4"> @*Sample 3*@
-                   <div class="form-group">
-                        <label asp-for="S3Thickness" class="control-label"></label>
-                        <input asp-for="S3Thickness" class="form-control" />
-                        <span asp-validation-for="S3Thickness" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3Hardness_b" class="control-label"></label>
-                        <input asp-for="S3Hardness_b" class="form-control" />
-                        <span asp-validation-for="S3Hardness_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3Hardness_a" class="control-label"></label>
-                        <input asp-for="S3Hardness_a" class="form-control" />
-                        <span asp-validation-for="S3Hardness_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3WtAir_b" class="control-label"></label>
-                        <input asp-for="S3WtAir_b" class="form-control" />
-                        <span asp-validation-for="S3WtAir_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3WtAir_a" class="control-label"></label>
-                        <input asp-for="S3WtAir_a" class="form-control" />
-                        <span asp-validation-for="S3WtAir_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3WtWater_b" class="control-label"></label>
-                        <input asp-for="S3WtWater_b" class="form-control" />
-                        <span asp-validation-for="S3WtWater_b" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3WtWater_a" class="control-label"></label>
-                        <input asp-for="S3WtWater_a" class="form-control" />
-                        <span asp-validation-for="S3WtWater_a" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3_25Mod" class="control-label"></label>
-                        <input asp-for="S3_25Mod" class="form-control" />
-                        <span asp-validation-for="S3_25Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3_50Mod" class="control-label"></label>
-                        <input asp-for="S3_50Mod" class="form-control" />
-                        <span asp-validation-for="S3_50Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3_100Mod" class="control-label"></label>
-                        <input asp-for="S3_100Mod" class="form-control" />
-                        <span asp-validation-for="S3_100Mod" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3_tensile" class="control-label"></label>
-                        <input asp-for="S3_tensile" class="form-control" />
-                        <span asp-validation-for="S3_tensile" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="S3_elongation" class="control-label"></label>
-                        <input asp-for="S3_elongation" class="form-control" />
-                        <span asp-validation-for="S3_elongation" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
-            </div>
+            </form>
+        </div>
+    </div>
 
-            <div class="form-group"> @*Observation Input*@
-                <label asp-for="Observations" class="control-label"></label>
-                <input asp-for="Observations" class="form-control" />
-                <span asp-validation-for="Observations" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div>
+        <a asp-controller="Tests" asp-action="Index">Cancel</a>
     </div>
 </div>
 
-<div>
-    <a asp-controller="Tests" asp-action="Index">Cancel</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

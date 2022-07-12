@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MudTestApp.Data;
 
 namespace MudTestApp.Migrations
 {
     [DbContext(typeof(MudTestAppContext))]
-    partial class MudTestAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220712162232_Rem_Reqd_add_aniline")]
+    partial class Rem_Reqd_add_aniline
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,9 +278,6 @@ namespace MudTestApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double?>("AnilinePoint")
-                        .HasColumnType("float");
-
                     b.Property<string>("ContactName")
                         .HasColumnType("nvarchar(max)");
 
@@ -333,6 +332,9 @@ namespace MudTestApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("AnilinePoint")
+                        .HasColumnType("float");
 
                     b.Property<int>("CompoundID")
                         .HasColumnType("int");
