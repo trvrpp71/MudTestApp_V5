@@ -81,7 +81,7 @@ namespace MudTestApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
 
-            [Bind("Epicor,CustomerID, Operator, OpField, LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+            [Bind("Epicor,CustomerID, Operator, OpField, LabTechAssigned,MudType,MudSystemName,AnilinePoint, ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace MudTestApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestID,Epicor,CustomerID,Operator, OpField,LabTechAssigned,MudType,MudSystemName,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestID,Epicor,CustomerID,Operator, OpField,LabTechAssigned,MudType,MudSystemName,AnilinePoint,ReceivedDate,ExposureTime,DateStarted,DateEnded,TimeOut,TestComments")] Test test)
 
 
         {

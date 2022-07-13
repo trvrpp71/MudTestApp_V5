@@ -3,41 +3,43 @@
 @{
     ViewData["Title"] = "Compound List";
 }
+<div class="container">
+    <h1>Index</h1>
 
-<h1>Index</h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompoundName)
+                </th>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CompoundName)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.C_Production)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompoundName)
-            </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.C_Production)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompoundName)
+                </td>
  
-            <td>
-                @Html.DisplayFor(modelItem => item.C_Production)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CompoundID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CompoundID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CompoundID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Production)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CompoundID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CompoundID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CompoundID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+</div>
