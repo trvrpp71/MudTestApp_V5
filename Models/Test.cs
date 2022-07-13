@@ -23,7 +23,13 @@ namespace MudTestApp.Models
         public int? Epicor { get; set; }
 
         [Display(Name = "Contact")]
-        public string? ContactName { get; set; }    
+        public string? ContactName { get; set; }
+        
+        [Display(Name ="Field")]
+        public string? OpField { get; set; }
+
+        [Display(Name ="Operator")]
+        public string? Operator { get; set; }
 
         [Display(Name = "Lab Tech")]
         public string? LabTechAssigned { get; set; }
@@ -34,6 +40,9 @@ namespace MudTestApp.Models
 
         [Display(Name ="Mud System")]
         public string? MudSystemName { get; set; }
+
+        [Display(Name = "Aniline Point")]
+        public double? AnilinePoint { get; set; }
 
         [Required (ErrorMessage = "The date the sample is received in the lab is required.")]
         [DataType(DataType.Date), Display(Name ="Sample Rec'd On"), DisplayFormat(DataFormatString ="{0:dd-MMM-yy}")]
@@ -49,9 +58,6 @@ namespace MudTestApp.Models
         //[DataType(DataType.Date), Display(Name = "Removed from Fluid on"), DisplayFormat(DataFormatString = "{0:dd-MMM-yy HH:mm}",ApplyFormatInEditMode =true),]
         [DataType(DataType.DateTime), Display(Name = "Removed from Fluid on")]
         public DateTime? DateEnded { get; set; }
-
-        //[DataType(DataType.Date), Display(Name = "Time of Removal"), DisplayFormat(DataFormatString = "{HH:mm}")]
-        //public DateTime? TimeOut { get; set; }
 
         [Display(Name = "Comments")]
         public string? TestComments { get; set; }

@@ -50,12 +50,12 @@ namespace MudTestApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("ListUsers", "Administration");
-                    }
+                    //if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    //{
+                    //    return RedirectToAction("ListUsers", "Administration");
+                    //}
 
-                    await SignInManager.SignInAsync(user, isPersistent: false);
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Tests");
                 }
 

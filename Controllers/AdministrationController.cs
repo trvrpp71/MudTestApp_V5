@@ -118,6 +118,32 @@ namespace MudTestApp.Controllers
 
 
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> ManageUserRoles(string userId)
+        //{
+        //    ViewBag.roleId = userId;
+
+        //    var user = await userManager.FindByIdAsync(userId);
+
+        //    if (user == null)
+        //    {
+        //        ViewBag.ErrorMessage = $"User with id = {userId} cannot be found.";
+        //        return View("NotFound");
+        //    }
+
+        //    var model = new List<UserRoleViewModel>();
+
+        //    foreach(var role in roleManager.Roles)
+        //    {
+        //        var userRoleViewModel = new UserRoleViewModel();
+        //        {
+        //            UserId = role.Id,
+        //            UserName = role.Name
+        //        };
+        //    }
+        //}
+
         /****************** Manage Roles *********************/
 
         [HttpGet]
@@ -244,7 +270,7 @@ namespace MudTestApp.Controllers
             }
         }
 
-            [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
             ViewBag.roleId = roleId;
@@ -325,5 +351,8 @@ namespace MudTestApp.Controllers
 
             return RedirectToAction("EditRole", new { Id = roleId });
         }
+
+
+
     }
 }

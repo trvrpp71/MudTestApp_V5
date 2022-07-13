@@ -9,67 +9,85 @@
     <h4>Details for Test Number: @Model.TestDVm.TestID</h4>
     <hr />
     <dl class="row"> @*Test Info (header stuff)*@
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.Epicor)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.Epicor)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
+            @Html.DisplayNameFor(model => model.TestDVm.Operator)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TestDVm.Operator)
+        </dd>
+        <dt class = "col-sm-3 mt-2">
+            @Html.DisplayNameFor(model => model.TestDVm.OpField)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TestDVm.OpField)
+        </dd>
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.Customer.CompanyName)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.Customer.CompanyName)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.ContactName)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.ContactName)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.LabTechAssigned)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.LabTechAssigned)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.MudType)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.MudType)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.MudSystemName)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.MudSystemName)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
+            @Html.DisplayNameFor(model => model.TestDVm.AnilinePoint)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TestDVm.AnilinePoint)
+        </dd>
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.ReceivedDate)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.ReceivedDate)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.ExposureTime)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.ExposureTime)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.DateStarted)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.DateStarted)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.DateEnded)
         </dt>
         <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.TestDVm.DateEnded)
         </dd>
-        <dt class = "col-sm-3">
+        <dt class = "col-sm-3 mt-2">
             @Html.DisplayNameFor(model => model.TestDVm.TestComments)
         </dt>
         <dd class = "col-sm-9">
@@ -89,11 +107,12 @@
     <div class="table-responsive">
         <table class="table table-sm" style="width:100%" id="detailTable">
 
-            <thead>
+            <th>
                 <th>Test #</th>
                 <th>Seq#</th>
                 <th>Compound</th>
                 <th>Test Temp</th>
+                <th>Aniline Pt</th>
                 <th>Sample #</th>
                 <th>Thk</th>
                 <th>Hrd(b)</th>

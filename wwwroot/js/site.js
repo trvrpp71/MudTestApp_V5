@@ -8,23 +8,15 @@ $(document).ready(function () {
         "scrollCollapse": true,
         "paging": true,
         "order": [[0, 'desc']],
-        "columns": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            { "width": "10%"},
-            { "width": "15%" },
-            null,
-        ]
-
+        columnDefs: [{
+            target: 0,
+            visible: false,
+        }]
     });
 
     $('#summaryTable').DataTable({
         "paging": false,
-        "scrollY": 400,
+        "scrollY": 500,
         dom: 'Bftr',
         buttons: ['excel']
     });
